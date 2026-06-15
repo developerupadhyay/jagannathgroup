@@ -1,3 +1,4 @@
+"use client";
 export default function About() {
   return (
     <section id="about" style={{ padding: "100px 24px", background: "#FAF6EF" }}>

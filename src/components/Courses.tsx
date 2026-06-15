@@ -38,7 +38,7 @@ export default function Courses() {
           {categories.map(cat => (
             <button key={cat} onClick={() => setActiveCategory(cat)}
               style={{
-                padding: "10px 24px", borderRadius: "25px", border: "none", cursor: "pointer",
+                padding: "10px 24px", borderRadius: "25px", cursor: "pointer",
                 background: activeCategory === cat ? "linear-gradient(135deg, #8B1A1A, #C41E3A)" : "#FFF",
                 color: activeCategory === cat ? "#FAF6EF" : "#8B1A1A",
                 fontSize: "13px", fontWeight: "600",
