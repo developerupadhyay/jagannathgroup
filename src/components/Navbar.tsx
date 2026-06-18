@@ -45,48 +45,45 @@ export default function Navbar() {
   return (
     <div style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 1000, display: "flex", flexDirection: "column" }}>
       {/* Top Announcement Bar */}
-      <div style={{
+      <div className="header-top-bar" style={{
         background: "#013a7d",
         color: "#FFFFFF",
         fontSize: "12px",
         fontWeight: "600",
         padding: "8px 24px",
         display: "flex",
-        justifyContent: "space-between",
         alignItems: "center",
         flexWrap: "wrap",
-        gap: "10px",
         borderBottom: "1px solid rgba(255, 255, 255, 0.1)"
       }}>
-        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "8px", justifyContent: "center" }}>
           <span style={{ color: "#D4AF37" }}>★</span>
           <span style={{ letterSpacing: "0.5px" }}>Admissions Open 2026 - 2027</span>
         </div>
-        <div style={{ display: "flex", gap: "16px", flexWrap: "wrap", color: "#FFFFFF" }}>
+        <div style={{ display: "flex", gap: "16px", flexWrap: "wrap", color: "#FFFFFF", justifyContent: "center" }}>
           <span>📞 Hotline: +91-9639895010</span>
           <span>📍 Sikri Kalan, Modinagar</span>
         </div>
       </div>
 
       {/* Main Navbar */}
-      <nav style={{
-        background: scrolled ? "rgba(255, 255, 255, 0.98)" : "#FFFFFF",
-        boxShadow: scrolled ? "0 10px 30px rgba(1, 58, 125, 0.06)" : "0 4px 20px rgba(0, 0, 0, 0.02)",
-        backdropFilter: scrolled ? "blur(10px)" : "none",
-        transition: "all 0.4s ease",
-        padding: scrolled ? "10px 40px" : "16px 40px",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-        borderBottom: "1px solid rgba(1, 58, 125, 0.05)"
-      }}>
+      <nav 
+        className={scrolled ? "scrolled" : ""}
+        style={{
+          transition: "all 0.4s ease",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          borderBottom: "1px solid rgba(1, 58, 125, 0.05)"
+        }}
+      >
         {/* Logo (Only Image, No Text) */}
         <Link href="/" style={{ display: "flex", alignItems: "center", textDecoration: "none" }}>
           <img 
             src="/website_images/logo.jpeg" 
             alt="Jagannath Group Logo" 
+            className="navbar-logo"
             style={{ 
-              height: scrolled ? "48px" : "60px", 
               width: "auto", 
               objectFit: "contain",
               transition: "all 0.3s ease",
@@ -204,10 +201,9 @@ export default function Navbar() {
 
         {/* Right CTA */}
         <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-          <Link href="/admissions" style={{
+          <Link href="/admissions" className="navbar-cta" style={{
             background: "#013a7d",
             color: "#FFFFFF", 
-            padding: scrolled ? "8px 20px" : "10px 24px", 
             borderRadius: "8px",
             textDecoration: "none", 
             fontSize: "13px", 
@@ -279,6 +275,55 @@ export default function Navbar() {
 
       {/* Global CSS Inject */}
       <style>{`
+        .header-top-bar {
+          justify-content: center;
+          gap: 8px 32px;
+        }
+        /* Default mobile header state (permanently scrolled look) */
+        nav {
+          background: rgba(255, 255, 255, 0.98) !important;
+          box-shadow: 0 10px 30px rgba(1, 58, 125, 0.06) !important;
+          backdrop-filter: blur(10px) !important;
+          padding: 10px 20px !important;
+        }
+        .navbar-logo {
+          height: 48px;
+        }
+        .navbar-cta {
+          padding: 8px 20px;
+        }
+
+        /* Desktop specific responsive header states */
+        @media (min-width: 993px) {
+          .header-top-bar {
+            justify-content: space-between;
+            gap: 10px;
+          }
+          nav {
+            background: #FFFFFF !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02) !important;
+            backdrop-filter: none !important;
+            padding: 16px 40px !important;
+          }
+          nav.scrolled {
+            background: rgba(255, 255, 255, 0.98) !important;
+            box-shadow: 0 10px 30px rgba(1, 58, 125, 0.06) !important;
+            backdrop-filter: blur(10px) !important;
+            padding: 10px 40px !important;
+          }
+          .navbar-logo {
+            height: 60px;
+          }
+          nav.scrolled .navbar-logo {
+            height: 48px;
+          }
+          .navbar-cta {
+            padding: 10px 24px;
+          }
+          nav.scrolled .navbar-cta {
+            padding: 8px 20px;
+          }
+        }
         .dropdown-item:hover {
           background-color: #f8fafc !important;
           color: #013a7d !important;
