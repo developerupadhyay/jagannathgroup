@@ -2,8 +2,6 @@
 import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import { courses, colleges } from "@/lib/data";
 
 function CoursesContent() {
@@ -198,7 +196,6 @@ function CoursesContent() {
 export default function CoursesPage() {
   return (
     <>
-      <Navbar />
       <div style={{ background: "#FAF9F6", minHeight: "100vh" }}>
         
         {/* Page Banner */}
@@ -240,7 +237,6 @@ export default function CoursesPage() {
           </Suspense>
         </div>
       </div>
-      <Footer />
 
       <style>{`
         .courses-search-panel input::placeholder {

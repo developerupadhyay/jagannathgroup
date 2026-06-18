@@ -1,6 +1,4 @@
 import { courses, colleges } from "@/lib/data";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -20,7 +18,6 @@ export default async function CourseDetailPage({ params }: PageProps) {
 
   return (
     <>
-      <Navbar />
       <div style={{ background: "#FAF9F6", minHeight: "100vh" }}>
         
         {/* Course Banner */}
@@ -179,7 +176,6 @@ export default async function CourseDetailPage({ params }: PageProps) {
         </section>
 
       </div>
-      <Footer />
 
       <style>{`
         .apply-btn:hover {

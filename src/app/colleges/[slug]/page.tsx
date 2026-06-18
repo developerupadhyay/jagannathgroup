@@ -1,6 +1,4 @@
 import { colleges, courses } from "@/lib/data";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -21,7 +19,6 @@ export default async function CollegeProfilePage({ params }: PageProps) {
 
   return (
     <>
-      <Navbar />
       <div style={{ background: "#FAF9F6", minHeight: "100vh" }}>
         
         {/* College Hero Banner with local background image */}
@@ -260,7 +257,6 @@ export default async function CollegeProfilePage({ params }: PageProps) {
         </section>
 
       </div>
-      <Footer />
 
       <style>{`
         .btn-details:hover {

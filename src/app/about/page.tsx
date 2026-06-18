@@ -1,12 +1,9 @@
 "use client";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 
 export default function AboutPage() {
   return (
     <>
-      <Navbar />
       <div style={{ background: "#FAF9F6", minHeight: "100vh" }}>
         
         {/* Page Banner */}
@@ -244,8 +241,6 @@ export default function AboutPage() {
           </div>
         </section>
       </div>
-
-      <Footer />
 
       <style>{`
         @media (max-width: 768px) {

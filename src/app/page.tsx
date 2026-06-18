@@ -1,4 +1,3 @@
-import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Colleges from "@/components/Colleges";
@@ -8,12 +7,10 @@ import Placements from "@/components/Placements";
 import Gallery from "@/components/Gallery";
 import Admissions from "@/components/Admissions";
 import Contact from "@/components/Contact";
-import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
     <>
-      <Navbar />
       <Hero />
       <About />
       <Colleges />
@@ -23,7 +20,6 @@ export default function Home() {
       <Placements />
       <Contact />
       <Admissions />
-      <Footer />
     </>
   );
 }

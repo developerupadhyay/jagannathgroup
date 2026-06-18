@@ -1,7 +1,5 @@
 "use client";
 import { useState } from "react";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import { colleges, courses } from "@/lib/data";
 
 export default function AdmissionsPage() {
@@ -41,7 +39,6 @@ export default function AdmissionsPage() {
 
   return (
     <>
-      <Navbar />
       <div style={{ background: "#FAF9F6", minHeight: "100vh" }}>
         
         {/* Page Banner */}
@@ -310,7 +307,6 @@ export default function AdmissionsPage() {
         </section>
 
       </div>
-      <Footer />
 
       <style>{`
         .admissions-page-form-container {

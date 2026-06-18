@@ -1,7 +1,5 @@
 "use client";
 import { useState } from "react";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import { colleges } from "@/lib/data";
 
 export default function ContactPage() {
@@ -35,7 +33,6 @@ export default function ContactPage() {
 
   return (
     <>
-      <Navbar />
       <div style={{ background: "#FAF9F6", minHeight: "100vh" }}>
         
         {/* Page Banner */}
@@ -277,7 +274,6 @@ export default function ContactPage() {
         </section>
 
       </div>
-      <Footer />
 
       <style>{`
         .contact-page-form input::placeholder,
