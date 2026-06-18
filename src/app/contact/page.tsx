@@ -3,7 +3,7 @@ import { useState } from "react";
 import { colleges } from "@/lib/data";
 
 export default function ContactPage() {
-  const [form, setForm] = useState({ name: "", email: "", phone: "", subject: "", message: "" });
+  const [form, setForm] = useState({ name: "", email: "", phone: "", subject: "", message: "", faxNumber: "" });
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -23,7 +23,7 @@ export default function ContactPage() {
         throw new Error(data.error || "Failed to send message.");
       }
       setSubmitted(true);
-      setForm({ name: "", email: "", phone: "", subject: "", message: "" });
+      setForm({ name: "", email: "", phone: "", subject: "", message: "", faxNumber: "" });
     } catch (err: any) {
       setError(err.message || "Failed to send message. Please try again.");
     } finally {
@@ -198,6 +198,18 @@ export default function ContactPage() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="contact-page-form" style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+                {/* Honeypot field for spam protection */}
+                <div style={{ display: "none" }} aria-hidden="true">
+                  <input 
+                    type="text" 
+                    name="faxNumber" 
+                    tabIndex={-1} 
+                    value={form.faxNumber} 
+                    onChange={e => setForm({ ...form, faxNumber: e.target.value })} 
+                    autoComplete="off" 
+                  />
+                </div>
+
                 <div style={{ textAlign: "center", marginBottom: "16px" }}>
                   <h3 style={{ fontFamily: "'Outfit', sans-serif", color: "#FAF9F6", fontSize: "26px", fontWeight: "800" }}>Send Us a Message</h3>
                   <p style={{ color: "#BAC9DA", fontSize: "14px", marginTop: "8px" }}>Drop a line and we will routing your query to the correct department.</p>

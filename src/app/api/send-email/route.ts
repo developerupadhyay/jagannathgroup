@@ -1,9 +1,38 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
+// Simple in-memory rate limiter (IP -> Timestamps)
+const rateLimitMap = new Map<string, number[]>();
+const LIMIT_WINDOW = 60 * 1000; // 1 minute
+const MAX_REQUESTS = 3; // Max 3 form submissions per minute per IP
+
 export async function POST(req: Request) {
   try {
+    const ip = req.headers.get("x-forwarded-for")?.split(",")[0] || req.headers.get("x-real-ip") || "127.0.0.1";
+    const now = Date.now();
+    const timestamps = rateLimitMap.get(ip) || [];
+    
+    // Filter out timestamps older than the window
+    const recentTimestamps = timestamps.filter(t => now - t < LIMIT_WINDOW);
+    
+    if (recentTimestamps.length >= MAX_REQUESTS) {
+      return NextResponse.json(
+        { error: "Too many submissions. Please wait a minute before trying again." },
+        { status: 429 }
+      );
+    }
+    
+    recentTimestamps.push(now);
+    rateLimitMap.set(ip, recentTimestamps);
+
     const { formType, data } = await req.json();
+
+    // Honeypot check: if 'faxNumber' has value, it's a bot submission
+    if (data && data.faxNumber) {
+      console.warn(`[Spam Protection] Bot detected from IP: ${ip} via Honeypot field.`);
+      // Return a fake success response to trick the bot
+      return NextResponse.json({ success: true, message: "Request received" });
+    }
 
     const host = process.env.SMTP_HOST;
     const port = parseInt(process.env.SMTP_PORT || "465", 10);

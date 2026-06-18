@@ -3,7 +3,7 @@ import { useState } from "react";
 import { colleges, courses } from "@/lib/data";
 
 export default function AdmissionsPage() {
-  const [form, setForm] = useState({ name: "", phone: "", email: "", college: "", course: "", message: "" });
+  const [form, setForm] = useState({ name: "", phone: "", email: "", college: "", course: "", message: "", faxNumber: "" });
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -29,7 +29,7 @@ export default function AdmissionsPage() {
         throw new Error(data.error || "Failed to submit enquiry.");
       }
       setSubmitted(true);
-      setForm({ name: "", phone: "", email: "", college: "", course: "", message: "" });
+      setForm({ name: "", phone: "", email: "", college: "", course: "", message: "", faxNumber: "" });
     } catch (err: any) {
       setError(err.message || "Failed to send enquiry. Please try again.");
     } finally {
@@ -90,6 +90,18 @@ export default function AdmissionsPage() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="admissions-page-form" style={{ display: "flex", flexDirection: "column", gap: "18px" }}>
+                {/* Honeypot field for spam protection */}
+                <div style={{ display: "none" }} aria-hidden="true">
+                  <input 
+                    type="text" 
+                    name="faxNumber" 
+                    tabIndex={-1} 
+                    value={form.faxNumber} 
+                    onChange={e => setForm({ ...form, faxNumber: e.target.value })} 
+                    autoComplete="off" 
+                  />
+                </div>
+
                 <div style={{ textAlign: "center", marginBottom: "16px" }}>
                   <h3 style={{ fontFamily: "'Outfit', sans-serif", color: "#FAF9F6", fontSize: "26px", fontWeight: "800" }}>Online Enquiry Form</h3>
                   <p style={{ color: "#BAC9DA", fontSize: "14px", marginTop: "8px" }}>Select your preferred college and course to receive eligibility confirmation.</p>

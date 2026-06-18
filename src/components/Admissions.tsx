@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { colleges, courses } from "@/lib/data";
 
 export default function Admissions() {
-  const [form, setForm] = useState({ name: "", phone: "", email: "", college: "", course: "", message: "" });
+  const [form, setForm] = useState({ name: "", phone: "", email: "", college: "", course: "", message: "", faxNumber: "" });
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -31,7 +31,7 @@ export default function Admissions() {
         throw new Error(data.error || "Failed to submit enquiry.");
       }
       setSubmitted(true);
-      setForm({ name: "", phone: "", email: "", college: "", course: "", message: "" });
+      setForm({ name: "", phone: "", email: "", college: "", course: "", message: "", faxNumber: "" });
     } catch (err: any) {
       setError(err.message || "Failed to send enquiry. Please try again.");
     } finally {
@@ -150,6 +150,18 @@ export default function Admissions() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+                {/* Honeypot field for spam protection */}
+                <div style={{ display: "none" }} aria-hidden="true">
+                  <input 
+                    type="text" 
+                    name="faxNumber" 
+                    tabIndex={-1} 
+                    value={form.faxNumber} 
+                    onChange={e => setForm({ ...form, faxNumber: e.target.value })} 
+                    autoComplete="off" 
+                  />
+                </div>
+
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                   <h3 style={{ fontFamily: "'Outfit', sans-serif", color: "#013a7d", fontSize: "20px", fontWeight: "700" }}>Enquiry Form</h3>
                   <Link href="/admissions" style={{ fontSize: "12px", color: "#013a7d", fontWeight: "750", textDecoration: "none" }}

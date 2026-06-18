@@ -13,7 +13,7 @@ const stats = [
 
 export default function Hero() {
   const [mounted, setMounted] = useState(false);
-  const [form, setForm] = useState({ name: "", phone: "", email: "", college: "", course: "", message: "" });
+  const [form, setForm] = useState({ name: "", phone: "", email: "", college: "", course: "", message: "", faxNumber: "" });
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -51,7 +51,7 @@ export default function Hero() {
         throw new Error(data.error || "Failed to submit enquiry.");
       }
       setSubmitted(true);
-      setForm({ name: "", phone: "", email: "", college: "", course: "", message: "" });
+      setForm({ name: "", phone: "", email: "", college: "", course: "", message: "", faxNumber: "" });
       setTimeout(() => setSubmitted(false), 8000);
     } catch (err: any) {
       setError(err.message || "Failed to send enquiry. Please try again.");
@@ -216,6 +216,18 @@ export default function Hero() {
             </div>
           ) : (
             <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
+              {/* Honeypot field for spam protection */}
+              <div style={{ display: "none" }} aria-hidden="true">
+                <input 
+                  type="text" 
+                  name="faxNumber" 
+                  tabIndex={-1} 
+                  value={form.faxNumber} 
+                  onChange={e => setForm({ ...form, faxNumber: e.target.value })} 
+                  autoComplete="off" 
+                />
+              </div>
+
               <div style={{ textAlign: "center", marginBottom: "8px" }}>
                 <h3 style={{ fontFamily: "'Outfit', sans-serif", color: "#013a7d", fontSize: "22px", fontWeight: "700" }}>Quick Enquiry</h3>
                 <p style={{ color: "#475569", fontSize: "12.5px", marginTop: "4px" }}>Fill out your details to receive admission guidance.</p>
