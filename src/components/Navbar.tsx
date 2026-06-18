@@ -390,11 +390,21 @@ export default function Navbar() {
           .mobile-toggle { display: block !important; }
         }
         @media (max-width: 480px) {
+          nav {
+            padding: 8px 12px !important;
+          }
+          .navbar-logo {
+            height: 40px !important;
+          }
+          .navbar-cta {
+            padding: 6px 14px !important;
+            font-size: 12.5px !important;
+          }
           .mobile-menu-panel {
-            top: 122px !important;
+            top: 110px !important;
           }
           .mobile-menu-backdrop {
-            top: 122px !important;
+            top: 110px !important;
           }
         }
       `}</style>
