@@ -83,7 +83,6 @@ export default function Hero() {
       alignItems: "center",
       justifyContent: "center",
       overflow: "hidden",
-      padding: "140px 24px 80px",
       background: "linear-gradient(135deg, #f0f5fa 0%, #ffffff 100%)",
       borderBottom: "1px solid rgba(1, 58, 125, 0.05)"
     }}>
@@ -124,17 +123,12 @@ export default function Hero() {
         maxWidth: "1200px",
         width: "100%",
         margin: "0 auto",
-        display: "grid",
-        gridTemplateColumns: "1.2fr 1fr",
-        gap: "60px",
-        alignItems: "center",
       }} className="hero-grid">
         
         <motion.div 
           initial={{ opacity: 0, x: -45 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
-          style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", textAlign: "left" }}
           className="hero-left"
         >
           <div style={{
@@ -168,7 +162,7 @@ export default function Hero() {
             world-class professional education across 5 institutions in Modinagar, UP.
           </p>
 
-          <div style={{ display: "flex", gap: "16px", flexWrap: "wrap", marginBottom: "48px" }}>
+          <div className="hero-ctas">
             <a href="#colleges" style={{
               background: "#D4AF37",
               color: "#001A3D", padding: "14px 32px", borderRadius: "8px",
@@ -192,10 +186,7 @@ export default function Hero() {
             >Admission Flow</Link>
           </div>
 
-          <div style={{
-            display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "12px",
-            width: "100%", maxWidth: "600px",
-          }} className="hero-stats">
+          <div className="hero-stats">
             {stats.map((s, i) => (
               <div key={i} style={{
                 padding: "16px", textAlign: "center",
@@ -215,14 +206,6 @@ export default function Hero() {
           initial={{ opacity: 0, x: 45 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.15 }}
-          style={{
-            background: "#FFFFFF",
-            border: "1px solid rgba(255, 255, 255, 0.9)",
-            borderRadius: "16px",
-            padding: "36px",
-            boxShadow: "0 20px 50px rgba(0, 0, 0, 0.22)",
-            width: "100%",
-          }}
           className="hero-form-container"
         >
           {submitted ? (
@@ -353,6 +336,42 @@ export default function Hero() {
       </div>
 
       <style>{`
+        #home {
+          padding: 200px 24px 100px;
+        }
+        .hero-grid {
+          display: grid;
+          grid-template-columns: 1.2fr 1fr;
+          gap: 60px;
+          align-items: center;
+        }
+        .hero-left {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          text-align: left;
+        }
+        .hero-ctas {
+          display: flex;
+          gap: 16px;
+          flex-wrap: wrap;
+          margin-bottom: 48px;
+        }
+        .hero-stats {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 12px;
+          width: 100%;
+          max-width: 600px;
+        }
+        .hero-form-container {
+          background: #FFFFFF;
+          border: 1px solid rgba(255, 255, 255, 0.9);
+          border-radius: 16px;
+          padding: 36px;
+          box-shadow: 0 20px 50px rgba(0, 0, 0, 0.22);
+          width: 100%;
+        }
         .hero-form-container input::placeholder,
         .hero-form-container textarea::placeholder {
           color: #94a3b8 !important;
@@ -364,29 +383,35 @@ export default function Hero() {
           background: #FFFFFF !important;
         }
         @media (max-width: 992px) {
+          #home {
+            padding: 140px 20px 60px;
+          }
           .hero-grid {
-            grid-template-columns: 1fr !important;
-            text-align: center !important;
-            padding-top: 130px !important;
-            gap: 48px !important;
+            grid-template-columns: 1fr;
+            text-align: center;
+            gap: 48px;
           }
           .hero-left {
-            align-items: center !important;
-            text-align: center !important;
+            align-items: center;
+            text-align: center;
+          }
+          .hero-ctas {
+            justify-content: center;
           }
           .hero-form-container {
-            max-width: 550px !important;
-            margin: 0 auto !important;
+            max-width: 550px;
+            margin: 0 auto;
+            padding: 28px 20px;
           }
         }
         @media (max-width: 768px) {
           .hero-stats {
-            grid-template-columns: repeat(2, 1fr) !important;
+            grid-template-columns: repeat(2, 1fr);
           }
         }
         @media (max-width: 480px) {
           .hero-form-row {
-            grid-template-columns: 1fr !important;
+            grid-template-columns: 1fr;
           }
         }
       `}</style>

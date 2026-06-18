@@ -17,7 +17,6 @@ export default function Colleges() {
 
   return (
     <section id="colleges" ref={sectionRef} style={{
-      padding: "120px 24px",
       position: "relative",
       overflow: "hidden",
       borderBottom: "1px solid rgba(1, 58, 125, 0.05)"
@@ -83,7 +82,6 @@ export default function Colleges() {
                 onMouseLeave={() => setHoveredCard(null)}
                 style={{
                   position: "relative",
-                  height: "420px",
                   borderRadius: "16px",
                   overflow: "hidden",
                   border: "1px solid rgba(212, 175, 55, 0.15)",
@@ -96,7 +94,7 @@ export default function Colleges() {
                   cursor: "pointer",
                   gridColumn: isWide ? "span 2" : "auto"
                 }}
-                className={isWide ? "bento-card-wide" : ""}
+                className={`bento-card ${isWide ? "bento-card-wide" : ""}`}
               >
                 {/* Background Image */}
                 <img
@@ -125,10 +123,9 @@ export default function Colleges() {
                 }} />
 
                 {/* Card Content Wrapper */}
-                <div style={{
+                <div className="bento-card-content" style={{
                   position: "absolute",
                   inset: 0,
-                  padding: "30px",
                   zIndex: 2,
                   display: "flex",
                   flexDirection: "column",
@@ -247,6 +244,15 @@ export default function Colleges() {
       </div>
 
       <style>{`
+        #colleges {
+          padding: 120px 24px;
+        }
+        .bento-card {
+          height: 420px;
+        }
+        .bento-card-content {
+          padding: 30px;
+        }
         @media (max-width: 992px) {
           .colleges-bento-collage {
             grid-template-columns: repeat(2, 1fr) !important;
@@ -257,11 +263,22 @@ export default function Colleges() {
           }
         }
         @media (max-width: 768px) {
+          #colleges {
+            padding: 80px 16px;
+          }
           .colleges-bento-collage {
             grid-template-columns: 1fr !important;
           }
           .bento-card-wide {
             grid-column: span 1 !important;
+          }
+        }
+        @media (max-width: 480px) {
+          .bento-card {
+            height: 360px;
+          }
+          .bento-card-content {
+            padding: 20px;
           }
         }
       `}</style>

@@ -18,7 +18,7 @@ const cardVariants = {
 
 export default function Council() {
   return (
-    <section id="council" style={{ padding: "120px 24px", background: "#FFFFFF", borderBottom: "1px solid rgba(1, 58, 125, 0.05)" }}>
+    <section id="council" style={{ background: "#FFFFFF", borderBottom: "1px solid rgba(1, 58, 125, 0.05)" }}>
       <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
         
         {/* Header */}
@@ -85,6 +85,17 @@ export default function Council() {
         </motion.div>
 
       </div>
+
+      <style>{`
+        #council {
+          padding: 120px 24px;
+        }
+        @media (max-width: 768px) {
+          #council {
+            padding: 80px 16px;
+          }
+        }
+      `}</style>
     </section>
   );
 }

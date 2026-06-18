@@ -16,7 +16,6 @@ export default function Courses() {
 
   return (
     <section id="courses" style={{
-      padding: "120px 24px",
       background: "linear-gradient(135deg, #013a7d 0%, #014c9c 100%)"
     }}>
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
@@ -62,7 +61,7 @@ export default function Courses() {
               const college = colleges.find(c => c.slug === course.collegeSlug);
               return (
                 <motion.div 
-                  layout
+                   layout
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.9 }}
@@ -136,6 +135,17 @@ export default function Courses() {
           </Link>
         </div>
       </div>
+
+      <style>{`
+        #courses {
+          padding: 120px 24px;
+        }
+        @media (max-width: 768px) {
+          #courses {
+            padding: 80px 16px;
+          }
+        }
+      `}</style>
     </section>
   );
 }

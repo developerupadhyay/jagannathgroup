@@ -15,7 +15,7 @@ export default function Gallery() {
   const [selected, setSelected] = useState<number | null>(null);
 
   return (
-    <section id="gallery" style={{ padding: "120px 24px", background: "linear-gradient(180deg, #FAF9F6 0%, #F0EDE6 100%)" }}>
+    <section id="gallery" style={{ background: "linear-gradient(180deg, #FAF9F6 0%, #F0EDE6 100%)" }}>
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
         
         {/* Header */}
@@ -69,7 +69,13 @@ export default function Gallery() {
       </div>
 
       <style>{`
+        #gallery {
+          padding: 120px 24px;
+        }
         @media (max-width: 768px) {
+          #gallery {
+            padding: 80px 16px;
+          }
           .gallery-layout {
             grid-template-columns: 1fr 1fr !important;
           }

@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function About() {
   return (
-    <section id="about" style={{ padding: "120px 24px", background: "#FAF9F6", borderBottom: "1px solid rgba(1, 58, 125, 0.05)" }}>
+    <section id="about" style={{ background: "#FAF9F6", borderBottom: "1px solid rgba(1, 58, 125, 0.05)" }}>
       <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
         
         {/* Section Label */}
@@ -43,7 +43,7 @@ export default function About() {
                 students each year, preparing them for successful careers.
               </p>
               
-              <div style={{ marginBottom: "40px" }}>
+              <div className="about-btn-wrapper" style={{ marginBottom: "40px" }}>
                 <Link href="/about" style={{
                   display: "inline-block", background: "transparent",
                   color: "#013a7d", padding: "14px 32px", borderRadius: "8px", textDecoration: "none",
@@ -72,13 +72,9 @@ export default function About() {
                   borderRadius: "12px", padding: "20px",
                   border: "1px solid rgba(1, 58, 125, 0.06)",
                   boxShadow: "0 10px 25px rgba(1, 58, 125, 0.03)",
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "flex-start",
-                  gap: "10px",
                   transition: "all 0.3s"
                 }}
-                  className="hover-lift"
+                  className="hover-lift value-card"
                 >
                   {/* Icon wrapper */}
                   <div style={{
@@ -138,8 +134,8 @@ export default function About() {
             </div>
 
             {/* Floating badge */}
-            <div style={{
-              position: "absolute", top: "-20px", right: "-20px",
+            <div className="floating-campuses-badge" style={{
+              position: "absolute",
               background: "#013a7d", border: "2px solid #D4AF37", borderRadius: "12px", padding: "14px 22px",
               boxShadow: "0 10px 25px rgba(1, 58, 125, 0.25)", textAlign: "center",
               zIndex: 3
@@ -152,9 +148,51 @@ export default function About() {
       </div>
 
       <style>{`
+        #about {
+          padding: 120px 24px;
+        }
+        .floating-campuses-badge {
+          top: -20px;
+          right: -20px;
+        }
+        .value-card {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 10px;
+        }
+        .about-btn-wrapper {
+          text-align: left;
+        }
         @media (max-width: 768px) {
-          .about-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
-          .values-grid { grid-template-columns: 1fr !important; }
+          #about {
+            padding: 80px 16px;
+          }
+          .about-grid { 
+            grid-template-columns: 1fr !important; 
+            gap: 40px !important; 
+            text-align: center;
+          }
+          .about-grid p {
+            text-align: center;
+          }
+          .about-btn-wrapper {
+            text-align: center;
+          }
+          .values-grid { 
+            grid-template-columns: 1fr !important; 
+          }
+          .value-card {
+            align-items: center;
+            text-align: center;
+          }
+          .about-right {
+            min-height: 350px !important;
+          }
+          .floating-campuses-badge {
+            top: -10px !important;
+            right: 0px !important;
+          }
         }
       `}</style>
     </section>

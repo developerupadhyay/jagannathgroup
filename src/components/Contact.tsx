@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 export default function Contact() {
   return (
-    <section id="contact" style={{ padding: "120px 24px", background: "#FAF9F6" }}>
+    <section id="contact" style={{ background: "#FAF9F6" }}>
       <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
         
         {/* Header */}
@@ -38,9 +38,8 @@ export default function Contact() {
               border: "1px solid rgba(212, 175, 55, 0.15)",
               borderTop: "3px solid #D4AF37",
               boxShadow: "0 15px 35px rgba(1, 58, 125, 0.08)",
-              display: "flex", gap: "20px", alignItems: "flex-start",
             }}
-              className="hover-lift"
+              className="hover-lift contact-card"
             >
               {/* Icon wrapper (Soft Glass Wrapper with Gold Icon) */}
               <div style={{
@@ -97,9 +96,25 @@ export default function Contact() {
       </div>
 
       <style>{`
+        #contact {
+          padding: 120px 24px;
+        }
+        .contact-card {
+          display: flex;
+          gap: 20px;
+          align-items: flex-start;
+        }
         @media (max-width: 768px) {
+          #contact {
+            padding: 80px 16px;
+          }
           .contact-grid {
             grid-template-columns: 1fr !important;
+          }
+          .contact-card {
+            flex-direction: column !important;
+            align-items: center !important;
+            text-align: center !important;
           }
         }
       `}</style>

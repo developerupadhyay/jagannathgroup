@@ -5,7 +5,6 @@ import { placementStats, placementRecruiters } from "@/lib/data";
 export default function Placements() {
   return (
     <section id="placements" style={{
-      padding: "120px 24px",
       background: "linear-gradient(135deg, #013a7d 0%, #014c9c 100%)"
     }}>
       <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
@@ -82,10 +81,10 @@ export default function Placements() {
             transition={{ duration: 0.8 }}
             style={{ height: "100%" }}
           >
-            <div style={{
+            <div className="recruiters-card-wrapper" style={{
               background: "#FFFFFF", 
               backdropFilter: "none",
-              borderRadius: "24px", padding: "40px",
+              borderRadius: "24px",
               border: "1px solid rgba(1, 58, 125, 0.06)", 
               borderTop: "3px solid #D4AF37",
               boxShadow: "0 20px 45px rgba(1, 58, 125, 0.06)",
@@ -126,12 +125,24 @@ export default function Placements() {
       </div>
 
       <style>{`
+        #placements {
+          padding: 120px 24px;
+        }
+        .recruiters-card-wrapper {
+          padding: 40px;
+        }
         @media (max-width: 768px) {
+          #placements {
+            padding: 80px 16px;
+          }
           .placements-layout { grid-template-columns: 1fr !important; gap: 40px !important; }
           .recruiters-grid { grid-template-columns: repeat(2, 1fr) !important; }
         }
         @media (max-width: 480px) {
           .stats-container { grid-template-columns: 1fr !important; }
+          .recruiters-card-wrapper {
+            padding: 24px 16px;
+          }
         }
       `}</style>
     </section>

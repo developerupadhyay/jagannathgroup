@@ -40,7 +40,7 @@ export default function Admissions() {
   };
 
   return (
-    <section id="admissions" style={{ padding: "120px 24px", background: "linear-gradient(135deg, #013a7d 0%, #014c9c 50%, #013a7d 100%)", position: "relative", overflow: "hidden" }}>
+    <section id="admissions" style={{ background: "linear-gradient(135deg, #013a7d 0%, #014c9c 50%, #013a7d 100%)", position: "relative", overflow: "hidden" }}>
       {/* Decorative */}
       <div style={{ position: "absolute", top: "-100px", right: "-100px", width: "400px", height: "400px", borderRadius: "50%", background: "rgba(212,175,55,0.03)" }} />
       <div style={{ position: "absolute", bottom: "-100px", left: "-100px", width: "300px", height: "300px", borderRadius: "50%", background: "rgba(212,175,55,0.02)" }} />
@@ -108,15 +108,11 @@ export default function Admissions() {
               </div>
             </div>
 
-            <div style={{ 
+            <div className="admissions-helpline" style={{ 
               background: "#FFFFFF", 
               borderRadius: "16px", 
-              padding: "20px 24px", 
               border: "1px solid rgba(1, 58, 125, 0.12)",
               borderTop: "3px solid #D4AF37",
-              display: "flex",
-              flexDirection: "column",
-              gap: "8px",
               boxShadow: "0 6px 15px rgba(1, 58, 125, 0.03)"
             }}>
               <div style={{ color: "#013a7d", fontSize: "12px", fontWeight: "750", letterSpacing: "1.5px", textTransform: "uppercase" }}>Admissions Helpline</div>
@@ -142,7 +138,6 @@ export default function Admissions() {
               border: "1px solid rgba(1, 58, 125, 0.05)", 
               borderTop: "4px solid #D4AF37",
               borderRadius: "24px", 
-              padding: "36px", 
               boxShadow: "0 20px 50px rgba(0, 26, 61, 0.12)" 
             }}
             className="admissions-form-container"
@@ -255,12 +250,62 @@ export default function Admissions() {
       </div>
 
       <style>{`
+        #admissions {
+          padding: 120px 24px;
+        }
+        @media (max-width: 768px) {
+          #admissions {
+            padding: 80px 16px;
+          }
+        }
+        .admissions-helpline {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+          padding: 20px 24px;
+        }
+        .admissions-form-container {
+          padding: 36px;
+        }
         .admissions-form-container input::placeholder,
         .admissions-form-container textarea::placeholder {
           color: rgba(250, 249, 246, 0.5) !important;
         }
         @media (max-width: 992px) {
-          .admissions-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+          .admissions-grid { 
+            grid-template-columns: 1fr !important; 
+            gap: 40px !important; 
+          }
+          .admissions-left {
+            text-align: center !important;
+            align-items: center !important;
+          }
+          .admissions-left h3 {
+            text-align: center !important;
+          }
+          .admissions-features-grid {
+            width: 100% !important;
+          }
+          .admissions-features-grid > div {
+            align-items: center !important;
+            text-align: center !important;
+          }
+          .admissions-features-grid > div > div:first-child {
+            margin: 0 auto !important;
+          }
+          .admissions-helpline {
+            width: 100% !important;
+            align-items: center !important;
+            text-align: center !important;
+          }
+          .admissions-helpline > div:nth-child(2) {
+            justify-content: center !important;
+          }
+          .admissions-form-container {
+            max-width: 550px !important;
+            margin: 0 auto !important;
+            padding: 28px 20px !important;
+          }
         }
         @media (max-width: 768px) {
           .admissions-features-grid { grid-template-columns: 1fr !important; }
