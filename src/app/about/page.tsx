@@ -72,9 +72,10 @@ export default function AboutPage() {
             }}>
               <div style={{ fontSize: "40px" }}>👁️‍🗨️</div>
               <h3 style={{ fontFamily: "'Outfit', sans-serif", fontSize: "26px", color: "#0A192F", fontWeight: "700" }}>Our Vision</h3>
-              <p style={{ color: "#435870", lineHeight: 1.8, fontSize: "15px" }}>
-                To emerge as a premier educational group known for fostering innovation, analytical thinking, and ethical values. We strive to create an inclusive environment where students from diverse backgrounds are empowered to become global leaders, compassionate caregivers, and pioneering researchers.
-              </p>
+              <ul style={{ color: "#435870", lineHeight: 1.8, fontSize: "14.5px", paddingLeft: "20px", display: "flex", flexDirection: "column", gap: "10px" }}>
+                <li>To be a center of excellence in higher education with innovative teaching, learning, and research activities, catering to the academic needs of the students by providing qualitative education making them self-sufficient in life.</li>
+                <li>To follow a holistic approach for the growth of interpersonal and intrapersonal skills which are essential to build a creative, enlightened, and productive civil society in this region.</li>
+              </ul>
             </div>
 
             {/* Mission */}
@@ -85,9 +86,14 @@ export default function AboutPage() {
             }}>
               <div style={{ fontSize: "40px" }}>🎯</div>
               <h3 style={{ fontFamily: "'Outfit', sans-serif", fontSize: "26px", color: "#0A192F", fontWeight: "700" }}>Our Mission</h3>
-              <p style={{ color: "#435870", lineHeight: 1.8, fontSize: "15px" }}>
-                To deliver state-of-the-art infrastructure, advanced laboratory training, and clinical exposure to bridge the gap between academic education and industry standards. We are dedicated to providing affordable, high-quality professional training in Pharmacy, Nursing, Law, and Education while inculcating social responsibility in every student.
-              </p>
+              <ul style={{ color: "#435870", lineHeight: 1.8, fontSize: "14px", paddingLeft: "20px", display: "flex", flexDirection: "column", gap: "6px" }}>
+                <li>To provide students with knowledge, skills, values, and sensitivity to face challenges in both academic and personal life.</li>
+                <li>To develop human potential to achieve diverse opportunities in the future.</li>
+                <li>To enhance the new teaching-learning process for students, faculties, and staff.</li>
+                <li>To develop critical and independent thinking to face various global challenges.</li>
+                <li>To generate and disseminate knowledge through interdisciplinary research and creative inquiry for creating a meaningful society.</li>
+                <li>To enable students to explore locally available economic resources for their employment and providing support to the society.</li>
+              </ul>
             </div>
           </div>
         </section>
@@ -117,13 +123,16 @@ export default function AboutPage() {
                     boxShadow: "0 8px 20px rgba(10,25,47,0.2)"
                   }}>👨‍🏫</div>
                   <h4 style={{ fontFamily: "'Outfit', sans-serif", fontSize: "20px", color: "#0A192F", fontWeight: "700", marginBottom: "4px" }}>
-                    Shri Jagannath Ji
+                    Dr. Devraj Sharma
                   </h4>
-                  <p style={{ color: "#7E93A8", fontSize: "13px", fontWeight: "600", textTransform: "uppercase" }}>Founder & Chairman</p>
+                  <p style={{ color: "#7E93A8", fontSize: "13px", fontWeight: "600", textTransform: "uppercase" }}>Chairman</p>
                 </div>
                 <div>
-                  <p style={{ color: "#1C2D42", fontStyle: "italic", fontSize: "16px", lineHeight: 1.9, marginBottom: "20px" }}>
-                    "Our vision has always been to build institutions that do not just award degrees, but transform personalities. Education is the greatest tool for societal change. By providing high-quality professional courses in Pharmacy, Nursing, Law, and Education to the youth of Ghaziabad and surrounding regions, we hope to contribute to our nation's progress and ensure every student builds a meaningful, successful life."
+                  <p style={{ color: "#1C2D42", fontStyle: "italic", fontSize: "15.5px", lineHeight: 1.8, marginBottom: "20px" }}>
+                    "Welcome to the place where ideas and imaginations take flight, a place to pursue your passion and sharpen your mind, a place which will discover your strength and hone your skills to make an impact in the world. Jagannath Group of Institutions has the mission of preparing global leaders who create, manage and affect timely change across diverse organizations. If you are intellectually curious, if you want to learn, if you want to earn a degree that will prepare you to work with people of all cultures and equip people with the skills necessary for future, I look forward to welcome you personally to the world of opportunities and be the part of our world where learning has no limits."
+                  </p>
+                  <p style={{ color: "#D4AF37", fontWeight: "700", fontSize: "14.5px", borderLeft: "3px solid #D4AF37", paddingLeft: "12px", margin: "16px 0" }}>
+                    "EDUCATION is the power to think clearly, the power to act well in the world's works, and the power to appreciate life."
                   </p>
                   <div style={{ width: "40px", height: "2px", background: "#D4AF37" }} />
                 </div>

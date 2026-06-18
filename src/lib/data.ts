@@ -46,9 +46,9 @@ export const colleges: College[] = [
     secondaryColor: "#1B3D6D",
     badge: "Pharmacy",
     established: "2018",
-    affiliation: "Approved by Pharmacy Council of India (PCI), New Delhi & Affiliated to Board of Technical Education (BTE), Uttar Pradesh",
+    affiliation: "Approved by Pharmacy Council of India (PCI), New Delhi & Affiliated to Board of Technical Education (BTE), Lucknow & AKTU, Lucknow",
     desc: "Offering quality pharmaceutical education with state-of-the-art laboratories and experienced faculty.",
-    longDesc: "Jagannath College of Pharmacy (JCP) was established with the vision of providing world-class pharmaceutical education and research opportunities. The college is equipped with advanced laboratories, a well-stocked library, and a medicinal garden. Our program blends theoretical knowledge with intensive practical training, preparing students to excel in clinical pharmacy, research and development, quality control, and retail pharmacy sectors.",
+    longDesc: "Jagannath College of Pharmacy (JCP) was established with the vision of providing world-class pharmaceutical education and research opportunities. The college is approved by the Pharmacy Council of India (PCI) and affiliated with AKTU and BTE, Lucknow. Our program blends theoretical knowledge with intensive practical training, preparing students to excel in clinical pharmacy, research and development, quality control, and retail pharmacy sectors.",
     image: "/website_images/college_outside_photo2.jpeg",
     gallery: [
       "/website_images/college_outside_photo2.jpeg",
@@ -68,9 +68,9 @@ export const colleges: College[] = [
       { name: "Mr. Rajat Verma", designation: "Assistant Professor", qualification: "M.Pharm in Pharmacology" },
       { name: "Ms. Priyanka Negi", designation: "Lecturer", qualification: "B.Pharm, Registered Pharmacist" }
     ],
-    phone: ["+91-9639895010", "+91-8171875188"],
+    phone: ["+91-8532943626", "+91-8394059677"],
     email: "jagannathcollegeofpharmacy@gmail.com",
-    address: "Mohammadpur Road, Sikri Kalan, Modinagar, Ghaziabad, UP - 201204"
+    address: "Rapid Pillar No 1060, Mohammadpur Kadim Road, Sikri Kalan, Modinagar, Ghaziabad, (U.P) - 201204"
   },
   {
     id: 2,
@@ -103,9 +103,9 @@ export const colleges: College[] = [
       { name: "Mr. Amit Chaudhary", designation: "Assistant Professor", qualification: "M.Sc Nursing (Community Health)" },
       { name: "Ms. Neha Singh", designation: "Clinical Instructor", qualification: "B.Sc Nursing" }
     ],
-    phone: ["+91-9917682980", "+91-9639895010"],
+    phone: ["+91-8532943626", "+91-8394059677"],
     email: "jagannathcollegeofnursing26@gmail.com",
-    address: "Mohammadpur Road, Sikri Kalan, Modinagar, Ghaziabad, UP - 201204"
+    address: "Rapid Pillar No 1060, Mohammadpur Kadim Road, Sikri Kalan, Modinagar, Ghaziabad, (U.P) - 201204"
   },
   {
     id: 3,
@@ -138,9 +138,9 @@ export const colleges: College[] = [
       { name: "Dr. Vikas Tomar", designation: "Assistant Professor", qualification: "M.A (History), M.Ed, Ph.D" },
       { name: "Mr. Deepak Dhiman", designation: "Lecturer", qualification: "M.P.Ed (Physical Education)" }
     ],
-    phone: ["+91-9917682980", "+91-8171875188"],
+    phone: ["+91-8532943626", "+91-8394059677"],
     email: "shivaeducationalinstitute@gmail.com",
-    address: "Mohammadpur Road, Sikri Kalan, Modinagar, Ghaziabad, UP - 201204"
+    address: "Rapid Pillar No 1060, Mohammadpur Kadim Road, Sikri Kalan, Modinagar, Ghaziabad, (U.P) - 201204"
   },
   {
     id: 4,
@@ -173,9 +173,9 @@ export const colleges: College[] = [
       { name: "Mrs. Meenakshi Singh", designation: "Assistant Professor", qualification: "LL.M, 8 Yrs Legal Practice" },
       { name: "Mr. Gaurav Pathak", designation: "Lecturer", qualification: "LL.M, Specialization in Constitutional Law" }
     ],
-    phone: ["+91-9639895010", "+91-9917682980"],
+    phone: ["+91-8532943626", "+91-8394059677"],
     email: "shivacollegeoflaw@gmail.com",
-    address: "Mohammadpur Road, Sikri Kalan, Modinagar, Ghaziabad, UP - 201204"
+    address: "Rapid Pillar No 1060, Mohammadpur Kadim Road, Sikri Kalan, Modinagar, Ghaziabad, (U.P) - 201204"
   },
   {
     id: 5,
@@ -208,9 +208,9 @@ export const colleges: College[] = [
       { name: "Mrs. Ritu Singhal", designation: "Assistant Professor (Management)", qualification: "MBA, UGC-NET" },
       { name: "Mr. P.K. Mishra", designation: "Lecturer (Arts)", qualification: "M.A in English Literature, B.Ed" }
     ],
-    phone: ["+91-9917682980", "+91-9639895010"],
+    phone: ["+91-8532943626", "+91-8394059677"],
     email: "sjei2014@gmail.com",
-    address: "Mohammadpur Road, Sikri Kalan, Modinagar, Ghaziabad, UP - 201204"
+    address: "Rapid Pillar No 1060, Mohammadpur Kadim Road, Sikri Kalan, Modinagar, Ghaziabad, (U.P) - 201204"
   }
 ];
 
@@ -222,9 +222,9 @@ export const courses: Course[] = [
     duration: "2 Years",
     type: "Diploma",
     category: "Pharmacy",
-    eligibility: "10+2 passed with Physics, Chemistry and Biology / Mathematics from a recognized board.",
+    eligibility: "50% Marks (Gen. & OBC) 45% Marks (SC/ST) in PCB/PCM in 12th",
     seatIntake: "60 Seats",
-    affiliationText: "Approved by Pharmacy Council of India (PCI) & Affiliated to Board of Technical Education (BTE), Lucknow, UP.",
+    affiliationText: "Approved by Pharmacy Council of India (PCI), New Delhi & Affiliated to Board of Technical Education (BTE), Lucknow.",
     overview: "D.Pharma is a foundation course in pharmacy. It introduces students to pharmaceutical chemistry, pharmacology, biochemistry, and hospital pharmacy. Graduates are licensed to work as pharmacists in hospitals, retail dispensaries, or start their own pharmacy retail business.",
     keySubjects: [
       "Pharmaceutics-I & II",
@@ -252,9 +252,9 @@ export const courses: Course[] = [
     duration: "4 Years",
     type: "Degree",
     category: "Pharmacy",
-    eligibility: "10+2 with Physics and Chemistry as compulsory subjects along with Mathematics/ Biology with at least 45% marks (40% for SC/ST).",
+    eligibility: "50% Marks (Gen. & OBC) 45% Marks (SC/ST) in PCB/PCM in 12th",
     seatIntake: "60 Seats",
-    affiliationText: "Approved by Pharmacy Council of India (PCI) & Affiliated to Board of Technical Education (BTE), Lucknow, UP.",
+    affiliationText: "Approved by Pharmacy Council of India (PCI), New Delhi & Affiliated to Dr. A.P.J. Abdul Kalam Technical University (AKTU), Lucknow.",
     overview: "B.Pharma is a comprehensive undergraduate course that deals with the preparation, compounding, and dispensing of drugs. Students study drug action, synthesis, dosage design, analysis, and clinical trials. The course prepares students for high-growth sectors like drug development, pharmaceutical marketing, quality assurance, and pharmacovigilance.",
     keySubjects: [
       "Human Anatomy & Physiology",
@@ -352,9 +352,9 @@ export const courses: Course[] = [
     duration: "2 Years",
     type: "Degree",
     category: "Education",
-    eligibility: "Graduation or Post-Graduation in Arts, Science, Commerce or Social Sciences with at least 50% marks (45% for SC/ST), qualified through UP B.Ed JEE Entrance Exam.",
+    eligibility: "50% Marks (Gen. & OBC) & 35% Marks (SC/ST) in UG/PG",
     seatIntake: "100 Seats",
-    affiliationText: "Recognized by National Council for Teacher Education (NCTE) & Affiliated to CCS University, Meerut.",
+    affiliationText: "Recognized by National Council for Teacher Education (NCTE) & Affiliated to Chaudhary Charan Singh (CCS) University, Meerut. (Admission through UP B.Ed JEE)",
     overview: "B.Ed is a professional course that qualifies graduates to teach in secondary (Class 9-10) and senior secondary (Class 11-12) schools. The course covers educational psychology, lesson planning, classroom management, evaluation techniques, and teaching methodologies of selected school subjects.",
     keySubjects: [
       "Contemporary India and Education",
@@ -382,9 +382,9 @@ export const courses: Course[] = [
     duration: "2 Years",
     type: "Diploma",
     category: "General",
-    eligibility: "Graduation in any stream (BA, B.Sc, B.Com, BCA, BBA, B.Tech) with at least 50% marks (45% for SC/ST). Selection is based on state-wide merit rank.",
+    eligibility: "50% Marks (Gen. & OBC) 45% Marks (SC/ST) in UG/PG",
     seatIntake: "50 Seats",
-    affiliationText: "Recognized by National Council for Teacher Education (NCTE), UP SCERT & Affiliated to Exam Regulatory Authority, Prayagraj, UP.",
+    affiliationText: "Recognized by National Council for Teacher Education (NCTE) & Affiliated to Exam Regulatory Authority (PNP), Prayagraj & SCERT, UP.",
     overview: "D.El.Ed (formerly known as BTC - Basic Training Certificate) is a professional diploma designed to train teachers for primary and upper-primary schools (Classes 1 to 8). It covers child development, elementary pedagogy, and activity-based learning approaches.",
     keySubjects: [
       "Child Development & Learning Process",
@@ -411,9 +411,9 @@ export const courses: Course[] = [
     duration: "5 Years",
     type: "Integrated",
     category: "Law",
-    eligibility: "10+2 passed from a recognized board with minimum 45% marks (42% for OBC, 40% for SC/ST).",
+    eligibility: "Intermediate (10+2) in any stream with 45% Marks",
     seatIntake: "120 Seats",
-    affiliationText: "Approved by Bar Council of India (BCI) & Affiliated to CCS University, Meerut.",
+    affiliationText: "Approved by Bar Council of India (BCI) & Affiliated to Chaudhary Charan Singh (CCS) University, Meerut.",
     overview: "BA.LLB is an integrated dual-degree program combining Bachelor of Arts (History, Sociology, Political Science) with professional Bachelor of Laws. It saves one academic year compared to standard law graduation and equips students with legal skills right from high school. Includes court visits, moot courts, and mandatory internship hours.",
     keySubjects: [
       "English & Legal Language",
@@ -445,9 +445,9 @@ export const courses: Course[] = [
     duration: "3 Years",
     type: "Degree",
     category: "Law",
-    eligibility: "Graduation in any discipline (B.A, B.Sc, B.Com, BBA, B.Tech) with at least 45% marks (42% for OBC, 40% for SC/ST).",
+    eligibility: "50% Marks in Graduation/Post Graduation",
     seatIntake: "120 Seats",
-    affiliationText: "Approved by Bar Council of India (BCI) & Affiliated to CCS University, Meerut.",
+    affiliationText: "Approved by Bar Council of India (BCI) & Affiliated to Chaudhary Charan Singh (CCS) University, Meerut.",
     overview: "LL.B is a professional postgraduate law degree. It is tailored for graduates of other fields who want to pivot to a career in law. The course covers core aspects of public, civil, criminal, international, and commercial law, focusing on court procedures and advocacy skills.",
     keySubjects: [
       "Jurisprudence",
@@ -545,7 +545,7 @@ export const courses: Course[] = [
     duration: "3 Years",
     type: "Degree",
     category: "General",
-    eligibility: "10+2 passed in Commerce or Science stream with at least 40% marks (33% for SC/ST).",
+    eligibility: "Intermediate (10+2) in any stream with 40% Marks",
     seatIntake: "120 Seats",
     affiliationText: "Approved by State Govt. & Affiliated to CCS University, Meerut.",
     overview: "B.Com is a foundational degree that provides extensive knowledge of accounting, auditing, commercial laws, finance, economics, and taxation. It serves as an excellent stepping stone for students aiming for chartered accountancy or financial analytics.",
@@ -578,7 +578,7 @@ export const courses: Course[] = [
     duration: "3 Years",
     type: "Degree",
     category: "General",
-    eligibility: "10+2 passed in any stream from a recognized board with minimum 40% marks.",
+    eligibility: "Intermediate (10+2) in any stream with 40% Marks",
     seatIntake: "180 Seats",
     affiliationText: "Approved by State Govt. & Affiliated to CCS University, Meerut.",
     overview: "Bachelor of Arts offers students the flexibility to study human history, society, literature, and governance. By choosing combinations from History, Political Science, English, Sociology, and Economics, students develop strong analytical, research, and communication skills suitable for administration and media.",
