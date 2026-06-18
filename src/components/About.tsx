@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function About() {
   return (
-    <section id="about" style={{ padding: "120px 24px", background: "#FAF9F6" }}>
+    <section id="about" style={{ padding: "120px 24px", background: "#FAF9F6", borderBottom: "1px solid rgba(1, 58, 125, 0.05)" }}>
       <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
         
         {/* Section Label */}
@@ -15,47 +15,51 @@ export default function About() {
           }}>Who We Are</span>
           <h2 style={{
             fontFamily: "'Outfit', sans-serif",
-            fontSize: "clamp(30px, 4vw, 44px)", color: "#0A192F",
+            fontSize: "clamp(30px, 4vw, 44px)", color: "#013a7d",
             marginTop: "12px", fontWeight: "800", letterSpacing: "-0.02em"
           }}>About Jagannath Group</h2>
-          <div style={{ width: "60px", height: "3px", background: "linear-gradient(90deg, #D4AF37, #F2D06B)", margin: "20px auto 0", borderRadius: "2px" }} />
+          <div style={{ width: "60px", height: "3px", background: "#D4AF37", margin: "20px auto 0", borderRadius: "2px" }} />
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "60px", alignItems: "center" }} className="about-grid">
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "60px", alignItems: "stretch" }} className="about-grid">
           {/* Left: Text */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
+            style={{ display: "flex", flexDirection: "column", justifyContent: "space-between" }}
           >
-            <p style={{ color: "#1C2D42", lineHeight: 1.8, fontSize: "16px", marginBottom: "24px" }}>
-              The <strong>Jagannath Group of Institutions</strong> is a premier educational organization 
-              located at Mohammadpur Road, Sikri Kalan, Modinagar, Ghaziabad, Uttar Pradesh. 
-              Committed to providing quality professional education, the group has established 
-              itself as a trusted name in the region.
-            </p>
-            <p style={{ color: "#435870", lineHeight: 1.8, fontSize: "16px", marginBottom: "28px" }}>
-              With 5 specialized institutions spanning Pharmacy, Nursing, Education, Law, and 
-              General Studies, the group offers diverse academic pathways to thousands of 
-              students each year, preparing them for successful careers.
-            </p>
-            
-            <div style={{ marginBottom: "40px" }}>
-              <Link href="/about" style={{
-                display: "inline-block", background: "linear-gradient(135deg, #0A192F, #1B3D6D)",
-                color: "#FAF9F6", padding: "12px 28px", borderRadius: "25px", textDecoration: "none",
-                fontSize: "13.5px", fontWeight: "700", boxShadow: "0 4px 15px rgba(10,25,47,0.15)",
-                transition: "all 0.3s ease", textTransform: "uppercase", letterSpacing: "0.5px"
-              }}
-                onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-1px)"; e.currentTarget.style.boxShadow = "0 6px 20px rgba(10,25,47,0.25)"; }}
-                onMouseLeave={e => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "0 4px 15px rgba(10,25,47,0.15)"; }}
-              >
-                Explore Legacy & Leadership →
-              </Link>
+            <div>
+              <p style={{ color: "#334155", lineHeight: 1.8, fontSize: "16px", marginBottom: "24px" }}>
+                The <strong>Jagannath Group of Institutions</strong> is a premier educational organization 
+                located at Mohammadpur Road, Sikri Kalan, Modinagar, Ghaziabad, Uttar Pradesh. 
+                Committed to providing quality professional education, the group has established 
+                itself as a trusted name in the region.
+              </p>
+              <p style={{ color: "#334155", lineHeight: 1.8, fontSize: "16px", marginBottom: "28px" }}>
+                With 5 specialized institutions spanning Pharmacy, Nursing, Education, Law, and 
+                General Studies, the group offers diverse academic pathways to thousands of 
+                students each year, preparing them for successful careers.
+              </p>
+              
+              <div style={{ marginBottom: "40px" }}>
+                <Link href="/about" style={{
+                  display: "inline-block", background: "transparent",
+                  color: "#013a7d", padding: "14px 32px", borderRadius: "8px", textDecoration: "none",
+                  fontSize: "13.5px", fontWeight: "700", border: "1.5px solid #013a7d",
+                  boxShadow: "none",
+                  transition: "all 0.3s ease", textTransform: "uppercase", letterSpacing: "0.5px"
+                }}
+                  onMouseEnter={e => { e.currentTarget.style.background = "rgba(1, 58, 125, 0.05)"; }}
+                  onMouseLeave={e => { e.currentTarget.style.background = "transparent"; }}
+                >
+                  Explore Legacy & Leadership →
+                </Link>
+              </div>
             </div>
 
-            {/* Values */}
+            {/* Values (Transparent Cards on White BG) */}
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }} className="values-grid">
               {[
                 { icon: "🎓", title: "Quality Education", desc: "AICTE, PCI, BTE & NCTE affiliated" },
@@ -64,13 +68,30 @@ export default function About() {
                 { icon: "🌟", title: "Modern Pedagogy", desc: "Hands-on lab and clinic routines" },
               ].map((v, i) => (
                 <div key={i} style={{
-                  background: "#FFF", borderRadius: "12px", padding: "20px",
-                  border: "1px solid #F0EDE6",
-                  boxShadow: "0 4px 15px rgba(0,0,0,0.02)",
-                }}>
-                  <div style={{ fontSize: "24px", marginBottom: "8px" }}>{v.icon}</div>
-                  <div style={{ fontWeight: "700", color: "#0A192F", fontSize: "14.5px", marginBottom: "4px", fontFamily: "'Outfit', sans-serif" }}>{v.title}</div>
-                  <div style={{ color: "#7E93A8", fontSize: "13px", lineHeight: 1.4 }}>{v.desc}</div>
+                  background: "#FFFFFF",
+                  borderRadius: "12px", padding: "20px",
+                  border: "1px solid rgba(1, 58, 125, 0.06)",
+                  boxShadow: "0 10px 25px rgba(1, 58, 125, 0.03)",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "flex-start",
+                  gap: "10px",
+                  transition: "all 0.3s"
+                }}
+                  className="hover-lift"
+                >
+                  {/* Icon wrapper */}
+                  <div style={{
+                    width: "42px", height: "42px", borderRadius: "8px",
+                    background: "rgba(1, 58, 125, 0.05)",
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                    fontSize: "20px",
+                    border: "1px solid rgba(1, 58, 125, 0.1)"
+                  }}>{v.icon}</div>
+                  <div>
+                    <div style={{ fontWeight: "700", color: "#013a7d", fontSize: "14.5px", marginBottom: "4px", fontFamily: "'Outfit', sans-serif" }}>{v.title}</div>
+                    <div style={{ color: "#475569", fontSize: "13px", lineHeight: 1.4 }}>{v.desc}</div>
+                  </div>
                 </div>
               ))}
             </div>
@@ -82,34 +103,35 @@ export default function About() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            style={{ position: "relative" }}
+            style={{ position: "relative", height: "100%", minHeight: "450px" }}
+            className="about-right"
           >
-            {/* Campus Photo with Overlay */}
+            {/* Campus Photo */}
             <div style={{
-              borderRadius: "24px", overflow: "hidden",
-              boxShadow: "0 20px 45px rgba(10,25,47,0.15)",
-              border: "1px solid rgba(212,175,55,0.2)",
-              aspectRatio: "4/3", position: "relative",
-              background: "#0A192F"
+              borderRadius: "12px", overflow: "hidden",
+              boxShadow: "0 20px 40px rgba(0, 0, 0, 0.06)",
+              border: "1px solid rgba(1, 58, 125, 0.05)",
+              position: "relative",
+              background: "#FFFFFF",
+              height: "100%"
             }}>
               <img 
                 src="/website_images/college_front_photo.jpeg" 
                 alt="Jagannath Group Campus Front View" 
-                style={{ width: "100%", height: "100%", objectFit: "cover", opacity: 0.9 }} 
+                style={{ width: "100%", height: "100%", objectFit: "cover" }} 
               />
-              {/* Gold gradient overlay */}
-              <div style={{
-                position: "absolute", inset: 0,
-                background: "linear-gradient(to top, rgba(10,25,47,0.85) 0%, rgba(10,25,47,0.1) 60%)",
-                pointerEvents: "none"
-              }} />
               
               {/* Bottom text inside image */}
-              <div style={{ position: "absolute", bottom: "32px", left: "32px", right: "32px" }}>
-                <h3 style={{ fontFamily: "'Outfit', sans-serif", fontSize: "22px", color: "#FAF9F6", fontWeight: "700", marginBottom: "6px" }}>
+              <div style={{ 
+                position: "absolute", bottom: "32px", left: "32px", right: "32px", 
+                background: "rgba(255, 255, 255, 0.95)", backdropFilter: "blur(8px)",
+                border: "1px solid rgba(1, 58, 125, 0.08)", padding: "16px", borderRadius: "12px", 
+                boxShadow: "0 10px 25px rgba(0,0,0,0.08)" 
+              }}>
+                <h3 style={{ fontFamily: "'Outfit', sans-serif", fontSize: "20px", color: "#013a7d", fontWeight: "700", marginBottom: "4px" }}>
                   Modinagar Main Campus
                 </h3>
-                <p style={{ color: "#D4AF37", fontSize: "13px", letterSpacing: "1px", textTransform: "uppercase", fontWeight: "600" }}>
+                <p style={{ color: "#D4AF37", fontSize: "12px", letterSpacing: "1px", textTransform: "uppercase", fontWeight: "750" }}>
                   Ghaziabad, Uttar Pradesh
                 </p>
               </div>
@@ -118,11 +140,12 @@ export default function About() {
             {/* Floating badge */}
             <div style={{
               position: "absolute", top: "-20px", right: "-20px",
-              background: "linear-gradient(135deg, #D4AF37, #F2D06B)", borderRadius: "14px", padding: "14px 22px",
-              boxShadow: "0 10px 25px rgba(212,175,55,0.4)", textAlign: "center"
+              background: "#013a7d", border: "2px solid #D4AF37", borderRadius: "12px", padding: "14px 22px",
+              boxShadow: "0 10px 25px rgba(1, 58, 125, 0.25)", textAlign: "center",
+              zIndex: 3
             }}>
-              <div style={{ fontSize: "22px", fontWeight: "800", color: "#0A192F", fontFamily: "'Outfit', sans-serif", lineHeight: 1 }}>5+</div>
-              <div style={{ fontSize: "10px", color: "#0A192F", fontWeight: "700", textTransform: "uppercase", letterSpacing: "1px", marginTop: "4px" }}>Campuses</div>
+              <div style={{ fontSize: "22px", fontWeight: "800", color: "#FFFFFF", fontFamily: "'Outfit', sans-serif", lineHeight: 1 }}>5+</div>
+              <div style={{ fontSize: "10px", color: "#D4AF37", fontWeight: "750", textTransform: "uppercase", letterSpacing: "1px", marginTop: "4px" }}>Campuses</div>
             </div>
           </motion.div>
         </div>

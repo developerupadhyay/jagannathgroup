@@ -46,8 +46,8 @@ export default function Navbar() {
     <div style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 1000, display: "flex", flexDirection: "column" }}>
       {/* Top Announcement Bar */}
       <div style={{
-        background: "#0A192F",
-        color: "#FAF9F6",
+        background: "#013a7d",
+        color: "#FFFFFF",
         fontSize: "12px",
         fontWeight: "600",
         padding: "8px 24px",
@@ -56,28 +56,29 @@ export default function Navbar() {
         alignItems: "center",
         flexWrap: "wrap",
         gap: "10px",
-        borderBottom: "1px solid rgba(212,175,55,0.15)"
+        borderBottom: "1px solid rgba(255, 255, 255, 0.1)"
       }}>
         <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-          <span style={{ animation: "pulse 2s infinite", color: "#D4AF37" }}>⚡</span>
+          <span style={{ color: "#D4AF37" }}>★</span>
           <span style={{ letterSpacing: "0.5px" }}>Admissions Open 2026 - 2027</span>
         </div>
-        <div style={{ display: "flex", gap: "16px", flexWrap: "wrap", color: "rgba(250,249,246,0.85)" }}>
+        <div style={{ display: "flex", gap: "16px", flexWrap: "wrap", color: "#FFFFFF" }}>
           <span>📞 Hotline: +91-9639895010</span>
           <span>📍 Sikri Kalan, Modinagar</span>
         </div>
       </div>
 
-      {/* Main Navbar (White Background) */}
+      {/* Main Navbar */}
       <nav style={{
-        background: "#FFFFFF",
-        boxShadow: scrolled ? "0 4px 25px rgba(10,25,47,0.08)" : "0 2px 10px rgba(10,25,47,0.02)",
+        background: scrolled ? "rgba(255, 255, 255, 0.98)" : "#FFFFFF",
+        boxShadow: scrolled ? "0 10px 30px rgba(1, 58, 125, 0.06)" : "0 4px 20px rgba(0, 0, 0, 0.02)",
+        backdropFilter: scrolled ? "blur(10px)" : "none",
         transition: "all 0.4s ease",
-        padding: scrolled ? "8px 40px" : "12px 40px",
+        padding: scrolled ? "10px 40px" : "16px 40px",
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
-        borderBottom: "1px solid #F0EDE6"
+        borderBottom: "1px solid rgba(1, 58, 125, 0.05)"
       }}>
         {/* Logo (Only Image, No Text) */}
         <Link href="/" style={{ display: "flex", alignItems: "center", textDecoration: "none" }}>
@@ -93,45 +94,30 @@ export default function Navbar() {
           />
         </Link>
 
-        {/* Desktop Links (Dark Navy/Slate text on White background) */}
+        {/* Desktop Links (Dark Navy & Blue) */}
         <ul style={{ display: "flex", gap: "24px", listStyle: "none", margin: 0, padding: 0, alignItems: "center" }} className="desktop-nav">
           <li>
             <Link href="/" style={{
-              color: pathname === "/" ? "#D4AF37" : "#0A192F",
-              textDecoration: "none", fontSize: "13px", fontWeight: "750", textTransform: "uppercase", letterSpacing: "0.5px",
+              color: pathname === "/" ? "#013a7d" : "#001A3D",
+              textDecoration: "none",
+              fontSize: "13px",
+              fontWeight: "700",
+              textTransform: "uppercase",
+              letterSpacing: "0.5px",
               transition: "color 0.2s"
             }} className="nav-link">Home</Link>
           </li>
 
-          {/* About Dropdown */}
-          <li style={{ position: "relative" }}
-              onMouseEnter={() => setActiveDropdown("about")}
-              onMouseLeave={() => setActiveDropdown(null)}>
-            <button style={{
-              background: "none", border: "none", cursor: "pointer",
-              color: pathname.startsWith("/about") ? "#D4AF37" : "#0A192F",
-              fontSize: "13px", fontWeight: "750", textTransform: "uppercase", letterSpacing: "0.5px",
-              display: "flex", alignItems: "center", gap: "4px", padding: "8px 0"
-            }}>
-              About Us <span style={{ fontSize: "10px" }}>▼</span>
-            </button>
-            {activeDropdown === "about" && (
-              <div style={{
-                position: "absolute", top: "100%", left: 0, width: "220px", background: "#FFFFFF",
-                borderRadius: "12px", boxShadow: "0 10px 30px rgba(10,25,47,0.12)", overflow: "hidden",
-                border: "1px solid #F0EDE6", display: "flex", flexDirection: "column"
-              }}>
-                <Link href="/about" style={{ padding: "12px 16px", color: "#0A192F", textDecoration: "none", fontSize: "13px", fontWeight: "600", borderBottom: "1px solid #F0EDE6" }} className="dropdown-item">
-                  Group Profile & Legacy
-                </Link>
-                <Link href="/about#messages" style={{ padding: "12px 16px", color: "#0A192F", textDecoration: "none", fontSize: "13px", fontWeight: "500", borderBottom: "1px solid #F0EDE6" }} className="dropdown-item">
-                  Leadership Messages
-                </Link>
-                <Link href="/about#values" style={{ padding: "12px 16px", color: "#0A192F", textDecoration: "none", fontSize: "13px", fontWeight: "500" }} className="dropdown-item">
-                  Our Core Values
-                </Link>
-              </div>
-            )}
+          <li>
+            <Link href="/about" style={{
+              color: pathname === "/about" ? "#013a7d" : "#001A3D",
+              textDecoration: "none",
+              fontSize: "13px",
+              fontWeight: "700",
+              textTransform: "uppercase",
+              letterSpacing: "0.5px",
+              transition: "color 0.2s"
+            }} className="nav-link">About Us</Link>
           </li>
 
           {/* Colleges Dropdown */}
@@ -140,25 +126,25 @@ export default function Navbar() {
               onMouseLeave={() => setActiveDropdown(null)}>
             <button style={{
               background: "none", border: "none", cursor: "pointer",
-              color: pathname.startsWith("/colleges") ? "#D4AF37" : "#0A192F",
-              fontSize: "13px", fontWeight: "750", textTransform: "uppercase", letterSpacing: "0.5px",
+              color: pathname.startsWith("/colleges") ? "#013a7d" : "#001A3D",
+              fontSize: "13px", fontWeight: "700", textTransform: "uppercase", letterSpacing: "0.5px",
               display: "flex", alignItems: "center", gap: "4px", padding: "8px 0"
-            }}>
+            }} className="nav-link-btn">
               Colleges <span style={{ fontSize: "10px" }}>▼</span>
             </button>
             {activeDropdown === "colleges" && (
               <div style={{
                 position: "absolute", top: "100%", left: "50%", transform: "translateX(-50%)", width: "290px", background: "#FFFFFF",
-                borderRadius: "12px", boxShadow: "0 10px 30px rgba(10,25,47,0.12)", overflow: "hidden",
-                border: "1px solid #F0EDE6", display: "flex", flexDirection: "column"
+                borderRadius: "12px", boxShadow: "0 20px 50px rgba(1, 58, 125, 0.12)", overflow: "hidden",
+                border: "1px solid rgba(1, 58, 125, 0.08)", display: "flex", flexDirection: "column", padding: "6px 0"
               }}>
                 {collegesList.map((col) => (
                   <Link key={col.slug} href={`/colleges/${col.slug}`} style={{
-                    padding: "12px 16px", color: "#0A192F", textDecoration: "none", fontSize: "13px", fontWeight: "600",
-                    borderBottom: "1px solid #F0EDE6", display: "flex", flexDirection: "column", gap: "2px"
+                    padding: "12px 16px", color: "#001A3D", textDecoration: "none", fontSize: "13px", fontWeight: "600",
+                    display: "flex", flexDirection: "column", gap: "2px", transition: "all 0.2s"
                   }} className="dropdown-item">
                     <span>{col.name}</span>
-                    <span style={{ fontSize: "11px", color: "#7E93A8", textTransform: "uppercase" }}>{col.slug.toUpperCase()} Campus</span>
+                    <span style={{ fontSize: "11px", color: "#64748b", textTransform: "uppercase" }}>{col.slug.toUpperCase()} Campus</span>
                   </Link>
                 ))}
               </div>
@@ -171,22 +157,22 @@ export default function Navbar() {
               onMouseLeave={() => setActiveDropdown(null)}>
             <button style={{
               background: "none", border: "none", cursor: "pointer",
-              color: pathname.startsWith("/courses") ? "#D4AF37" : "#0A192F",
-              fontSize: "13px", fontWeight: "750", textTransform: "uppercase", letterSpacing: "0.5px",
+              color: pathname.startsWith("/courses") ? "#013a7d" : "#001A3D",
+              fontSize: "13px", fontWeight: "700", textTransform: "uppercase", letterSpacing: "0.5px",
               display: "flex", alignItems: "center", gap: "4px", padding: "8px 0"
-            }}>
+            }} className="nav-link-btn">
               Academics <span style={{ fontSize: "10px" }}>▼</span>
             </button>
             {activeDropdown === "courses" && (
               <div style={{
                 position: "absolute", top: "100%", left: "50%", transform: "translateX(-50%)", width: "230px", background: "#FFFFFF",
-                borderRadius: "12px", boxShadow: "0 10px 30px rgba(10,25,47,0.12)", overflow: "hidden",
-                border: "1px solid #F0EDE6", display: "flex", flexDirection: "column"
+                borderRadius: "12px", boxShadow: "0 20px 50px rgba(1, 58, 125, 0.12)", overflow: "hidden",
+                border: "1px solid rgba(1, 58, 125, 0.08)", display: "flex", flexDirection: "column", padding: "6px 0"
               }}>
                 {coursesCategories.map((cat, idx) => (
                   <Link key={idx} href={`/courses${cat.query}`} style={{
-                    padding: "12px 16px", color: "#0A192F", textDecoration: "none", fontSize: "13px", fontWeight: "600",
-                    borderBottom: idx < coursesCategories.length - 1 ? "1px solid #F0EDE6" : "none"
+                    padding: "12px 16px", color: "#001A3D", textDecoration: "none", fontSize: "13px", fontWeight: "600",
+                    transition: "all 0.2s"
                   }} className="dropdown-item">
                     {cat.label}
                   </Link>
@@ -198,78 +184,70 @@ export default function Navbar() {
           {/* Admissions */}
           <li>
             <Link href="/admissions" style={{
-              color: pathname === "/admissions" ? "#D4AF37" : "#0A192F",
-              textDecoration: "none", fontSize: "13px", fontWeight: "750", textTransform: "uppercase", letterSpacing: "0.5px"
-            }}>Admissions</Link>
+              color: pathname === "/admissions" ? "#013a7d" : "#001A3D",
+              textDecoration: "none",
+              fontSize: "13px", fontWeight: "700", textTransform: "uppercase", letterSpacing: "0.5px",
+              transition: "color 0.2s"
+            }} className="nav-link">Admissions</Link>
           </li>
 
           {/* Contact */}
           <li>
             <Link href="/contact" style={{
-              color: pathname === "/contact" ? "#D4AF37" : "#0A192F",
-              textDecoration: "none", fontSize: "13px", fontWeight: "750", textTransform: "uppercase", letterSpacing: "0.5px"
-            }}>Contact</Link>
+              color: pathname === "/contact" ? "#013a7d" : "#001A3D",
+              textDecoration: "none",
+              fontSize: "13px", fontWeight: "700", textTransform: "uppercase", letterSpacing: "0.5px",
+              transition: "color 0.2s"
+            }} className="nav-link">Contact</Link>
           </li>
         </ul>
 
-        {/* Right CTA (Navy Blue background with White text on White header) */}
+        {/* Right CTA */}
         <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
           <Link href="/admissions" style={{
-            background: "linear-gradient(135deg, #0A192F, #1B3D6D)",
-            color: "#FAF9F6", padding: scrolled ? "8px 20px" : "10px 24px", borderRadius: "25px",
-            textDecoration: "none", fontSize: "13px", fontWeight: "700",
-            letterSpacing: "0.5px", textTransform: "uppercase",
-            boxShadow: "0 4px 15px rgba(10,25,47,0.15)",
+            background: "#013a7d",
+            color: "#FFFFFF", 
+            padding: scrolled ? "8px 20px" : "10px 24px", 
+            borderRadius: "8px",
+            textDecoration: "none", 
+            fontSize: "13px", 
+            fontWeight: "700",
+            letterSpacing: "0.5px", 
+            textTransform: "uppercase",
+            border: "none",
+            boxShadow: "0 4px 14px rgba(1, 58, 125, 0.2)",
             transition: "all 0.3s ease",
           }}
-            className="navbar-cta"
-            onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-1px)"; e.currentTarget.style.boxShadow = "0 6px 20px rgba(10,25,47,0.25)"; }}
-            onMouseLeave={e => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "0 4px 15px rgba(10,25,47,0.15)"; }}
+            onMouseEnter={e => { e.currentTarget.style.background = "#D4AF37"; }}
+            onMouseLeave={e => { e.currentTarget.style.background = "#013a7d"; }}
           >Apply Now</Link>
 
           {/* Mobile Menu Toggle */}
           <button onClick={() => setMenuOpen(!menuOpen)} style={{
-            background: "none", border: "none", color: "#0A192F", fontSize: "24px", cursor: "pointer", display: "none"
+            background: "none", border: "none", color: "#013a7d", fontSize: "24px", cursor: "pointer", display: "none"
           }} className="mobile-toggle">
             {menuOpen ? "✕" : "☰"}
           </button>
         </div>
       </nav>
 
-      {/* Mobile Menu Panel (White Background) */}
+      {/* Mobile Menu Panel */}
       {menuOpen && (
-        <div style={{
-          position: "fixed", top: "90px", left: 0, right: 0, bottom: 0, background: "#FFFFFF",
-          zIndex: 999, display: "flex", flexDirection: "column", padding: "24px 32px", gap: "20px",
-          overflowY: "auto", borderTop: "1px solid #F0EDE6"
-        }}>
-          <Link href="/" style={{ color: "#0A192F", textDecoration: "none", fontSize: "18px", fontWeight: "750" }}>Home</Link>
+        <div className="mobile-menu-panel">
+          <Link href="/" style={{ color: "#001A3D", textDecoration: "none", fontSize: "18px", fontWeight: "700" }}>Home</Link>
 
-          {/* About (Collapsible) */}
-          <div>
-            <div onClick={() => toggleDropdown("about")} style={{ color: "#0A192F", fontSize: "18px", fontWeight: "750", display: "flex", justifyContent: "space-between", cursor: "pointer" }}>
-              <span>About Us</span>
-              <span>{activeDropdown === "about" ? "▲" : "▼"}</span>
-            </div>
-            {activeDropdown === "about" && (
-              <div style={{ display: "flex", flexDirection: "column", gap: "14px", paddingLeft: "16px", marginTop: "12px", borderLeft: "2px solid #0A192F" }}>
-                <Link href="/about" style={{ color: "#435870", textDecoration: "none", fontSize: "15px" }}>Group Profile</Link>
-                <Link href="/about#messages" style={{ color: "#435870", textDecoration: "none", fontSize: "15px" }}>Leadership Messages</Link>
-                <Link href="/about#values" style={{ color: "#435870", textDecoration: "none", fontSize: "15px" }}>Core Values</Link>
-              </div>
-            )}
-          </div>
+          <Link href="/about" style={{ color: "#001A3D", textDecoration: "none", fontSize: "18px", fontWeight: "700" }}>About Us</Link>
 
           {/* Colleges (Collapsible) */}
           <div>
-            <div onClick={() => toggleDropdown("colleges")} style={{ color: "#0A192F", fontSize: "18px", fontWeight: "750", display: "flex", justifyContent: "space-between", cursor: "pointer" }}>
+            <div onClick={() => toggleDropdown("colleges")} style={{ color: "#001A3D", fontSize: "18px", fontWeight: "700", display: "flex", justifyContent: "space-between", cursor: "pointer" }}>
               <span>Colleges</span>
               <span>{activeDropdown === "colleges" ? "▲" : "▼"}</span>
             </div>
             {activeDropdown === "colleges" && (
-              <div style={{ display: "flex", flexDirection: "column", gap: "14px", paddingLeft: "16px", marginTop: "12px", borderLeft: "2px solid #0A192F" }}>
+              <div style={{ display: "flex", flexDirection: "column", gap: "14px", paddingLeft: "16px", marginTop: "12px", borderLeft: "2px solid #013a7d" }}>
                 {collegesList.map((col) => (
-                  <Link key={col.slug} href={`/colleges/${col.slug}`} style={{ color: "#435870", textDecoration: "none", fontSize: "15px" }}>
+                  <Link key={col.slug} href={`/colleges/${col.slug}`} style={{ color: "#013a7d", textDecoration: "none", fontSize: "15px", fontWeight: "600" }}>
                     {col.name}
                   </Link>
                 ))}
@@ -279,14 +257,14 @@ export default function Navbar() {
 
           {/* Academics (Collapsible) */}
           <div>
-            <div onClick={() => toggleDropdown("courses")} style={{ color: "#0A192F", fontSize: "18px", fontWeight: "750", display: "flex", justifyContent: "space-between", cursor: "pointer" }}>
+            <div onClick={() => toggleDropdown("courses")} style={{ color: "#001A3D", fontSize: "18px", fontWeight: "700", display: "flex", justifyContent: "space-between", cursor: "pointer" }}>
               <span>Academics</span>
               <span>{activeDropdown === "courses" ? "▲" : "▼"}</span>
             </div>
             {activeDropdown === "courses" && (
-              <div style={{ display: "flex", flexDirection: "column", gap: "14px", paddingLeft: "16px", marginTop: "12px", borderLeft: "2px solid #0A192F" }}>
+              <div style={{ display: "flex", flexDirection: "column", gap: "14px", paddingLeft: "16px", marginTop: "12px", borderLeft: "2px solid #013a7d" }}>
                 {coursesCategories.map((cat, idx) => (
-                  <Link key={idx} href={`/courses${cat.query}`} style={{ color: "#435870", textDecoration: "none", fontSize: "15px" }}>
+                  <Link key={idx} href={`/courses${cat.query}`} style={{ color: "#013a7d", textDecoration: "none", fontSize: "15px", fontWeight: "600" }}>
                     {cat.label}
                   </Link>
                 ))}
@@ -294,24 +272,49 @@ export default function Navbar() {
             )}
           </div>
 
-          <Link href="/admissions" style={{ color: "#0A192F", textDecoration: "none", fontSize: "18px", fontWeight: "750" }}>Admissions</Link>
-          <Link href="/contact" style={{ color: "#0A192F", textDecoration: "none", fontSize: "18px", fontWeight: "750" }}>Contact Us</Link>
+          <Link href="/admissions" style={{ color: "#001A3D", textDecoration: "none", fontSize: "18px", fontWeight: "700" }}>Admissions</Link>
+          <Link href="/contact" style={{ color: "#001A3D", textDecoration: "none", fontSize: "18px", fontWeight: "700" }}>Contact Us</Link>
         </div>
       )}
 
       {/* Global CSS Inject */}
       <style>{`
         .dropdown-item:hover {
-          background-color: #FAF9F6 !important;
-          color: #D4AF37 !important;
+          background-color: #f8fafc !important;
+          color: #013a7d !important;
+        }
+        .dropdown-item:hover span {
+          color: #013a7d !important;
         }
         .nav-link:hover {
-          color: #D4AF37 !important;
+          color: #013a7d !important;
+        }
+        .nav-link-btn:hover {
+          color: #013a7d !important;
+        }
+        .mobile-menu-panel {
+          position: fixed !important;
+          top: 105px !important;
+          left: 0 !important;
+          right: 0 !important;
+          bottom: 0 !important;
+          background: #FFFFFF !important;
+          z-index: 999 !important;
+          display: flex !important;
+          flex-direction: column !important;
+          padding: 24px 32px !important;
+          gap: 20px !important;
+          overflow-y: auto !important;
+          border-top: 1px solid rgba(1, 58, 125, 0.08) !important;
         }
         @media (max-width: 992px) {
           .desktop-nav { display: none !important; }
-          .navbar-cta { display: none !important; }
           .mobile-toggle { display: block !important; }
+        }
+        @media (max-width: 480px) {
+          .mobile-menu-panel {
+            top: 122px !important;
+          }
         }
       `}</style>
     </div>

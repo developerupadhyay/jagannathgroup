@@ -18,7 +18,7 @@ const cardVariants = {
 
 export default function Council() {
   return (
-    <section id="council" style={{ padding: "120px 24px", background: "#FAF9F6" }}>
+    <section id="council" style={{ padding: "120px 24px", background: "#FFFFFF", borderBottom: "1px solid rgba(1, 58, 125, 0.05)" }}>
       <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
         
         {/* Header */}
@@ -26,11 +26,11 @@ export default function Council() {
           <span style={{ color: "#D4AF37", fontSize: "13px", fontWeight: "700", letterSpacing: "3px", textTransform: "uppercase" }}>Governing Board</span>
           <h2 style={{ 
             fontFamily: "'Outfit', sans-serif", 
-            fontSize: "clamp(30px, 4vw, 44px)", color: "#0A192F", 
+            fontSize: "clamp(30px, 4vw, 44px)", color: "#013a7d", 
             marginTop: "12px", fontWeight: "800", letterSpacing: "-0.02em" 
           }}>Academic Advisory Council</h2>
-          <div style={{ width: "60px", height: "3px", background: "linear-gradient(90deg, #D4AF37, #F2D06B)", margin: "20px auto 0", borderRadius: "2px" }} />
-          <p style={{ color: "#5A6E85", fontSize: "16px", marginTop: "20px", maxWidth: "600px", margin: "20px auto 0" }}>
+          <div style={{ width: "60px", height: "3px", background: "#D4AF37", margin: "20px auto 0", borderRadius: "2px" }} />
+          <p style={{ color: "#475569", fontSize: "16px", marginTop: "20px", maxWidth: "600px", margin: "20px auto 0" }}>
             Our institutions are governed and guided by eminent academicians, administrators, and industry experts.
           </p>
         </div>
@@ -48,32 +48,36 @@ export default function Council() {
               key={i}
               variants={cardVariants}
               style={{
-                background: "#FFFFFF", borderRadius: "20px", padding: "32px 24px",
-                border: "1px solid #F0EDE6", textAlign: "center",
-                boxShadow: "0 4px 20px rgba(10,25,47,0.02)"
+                background: "#013a7d", 
+                backdropFilter: "none",
+                borderRadius: "16px", padding: "32px 24px",
+                border: "1px solid rgba(212, 175, 55, 0.15)",
+                borderTop: "3px solid #D4AF37",
+                textAlign: "center",
+                boxShadow: "0 15px 35px rgba(1, 58, 125, 0.1)"
               }}
               className="hover-lift"
             >
-              {/* Member Avatar */}
+              {/* Member Avatar (Soft Gold Tint Badge inside Light Card) */}
               <div style={{
                 width: "90px", height: "90px", borderRadius: "50%",
-                background: "linear-gradient(135deg, #0A192F 0%, #1B3D6D 100%)",
+                background: "#002452",
                 margin: "0 auto 20px", display: "flex", alignItems: "center", justifyItems: "center",
-                justifyContent: "center", fontSize: "40px", color: "#FAF9F6",
-                boxShadow: "0 6px 15px rgba(10,25,47,0.15)", border: "3px solid #D4AF37"
+                justifyContent: "center", fontSize: "40px",
+                boxShadow: "0 6px 15px rgba(0, 0, 0, 0.15)", border: "2px solid #D4AF37"
               }}>
                 {member.image}
               </div>
 
               {/* Details */}
-              <h4 style={{ fontFamily: "'Outfit', sans-serif", fontSize: "17.5px", color: "#0A192F", fontWeight: "700", marginBottom: "4px" }}>
+              <h4 style={{ fontFamily: "'Outfit', sans-serif", fontSize: "18px", color: "#FFFFFF", fontWeight: "800", marginBottom: "4px" }}>
                 {member.name}
               </h4>
-              <p style={{ fontSize: "13px", fontWeight: "700", color: "#D4AF37", textTransform: "uppercase", letterSpacing: "1px", marginBottom: "8px" }}>
+              <p style={{ fontSize: "11px", fontWeight: "750", color: "#D4AF37", textTransform: "uppercase", letterSpacing: "1px", marginBottom: "8px" }}>
                 {member.role}
               </p>
-              <div style={{ width: "30px", height: "1px", background: "#F0EDE6", margin: "12px auto" }} />
-              <p style={{ color: "#5A6E85", fontSize: "13px", lineHeight: 1.5 }}>
+              <div style={{ width: "40px", height: "1.5px", background: "rgba(255, 255, 255, 0.15)", margin: "12px auto", borderRadius: "1px" }} />
+              <p style={{ color: "#E2E8F0", fontSize: "13.5px", lineHeight: 1.5 }}>
                 {member.designation}
               </p>
             </motion.div>

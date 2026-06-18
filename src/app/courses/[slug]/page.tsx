@@ -21,10 +21,15 @@ export default async function CourseDetailPage({ params }: PageProps) {
   return (
     <>
       <Navbar />
-      <div style={{ paddingTop: "140px", background: "#FAF9F6", minHeight: "100vh" }}>
+      <div style={{ background: "#FAF9F6", minHeight: "100vh" }}>
         
         {/* Course Banner */}
-        <section style={{ padding: "60px 24px", background: `linear-gradient(135deg, ${college?.color || "#0A192F"} 0%, #020B18 100%)`, color: "#FAF9F6" }}>
+        <section style={{
+          padding: "160px 24px 80px",
+          background: `linear-gradient(135deg, ${college?.color || "#013a7d"} 0%, #020B18 100%)`,
+          color: "#FAF9F6",
+          borderBottom: "3px solid #D4AF37"
+        }}>
           <div style={{ maxWidth: "1100px", margin: "0 auto", display: "flex", flexDirection: "column", gap: "16px" }}>
             <div style={{ display: "flex", gap: "12px", alignItems: "center" }}>
               <span style={{
@@ -65,7 +70,7 @@ export default async function CourseDetailPage({ params }: PageProps) {
               
               {/* Overview */}
               <div>
-                <h2 style={{ fontFamily: "'Outfit', sans-serif", fontSize: "24px", color: "#0A192F", fontWeight: "800", marginBottom: "16px", letterSpacing: "-0.01em" }}>
+                <h2 style={{ fontFamily: "'Outfit', sans-serif", fontSize: "24px", color: "#013a7d", fontWeight: "800", marginBottom: "16px", letterSpacing: "-0.01em" }}>
                   Course Overview
                 </h2>
                 <p style={{ color: "#1C2D42", lineHeight: 1.8, fontSize: "15.5px" }}>
@@ -75,17 +80,20 @@ export default async function CourseDetailPage({ params }: PageProps) {
 
               {/* Syllabus / Key Subjects */}
               <div>
-                <h2 style={{ fontFamily: "'Outfit', sans-serif", fontSize: "24px", color: "#0A192F", fontWeight: "800", marginBottom: "16px", letterSpacing: "-0.01em" }}>
+                <h2 style={{ fontFamily: "'Outfit', sans-serif", fontSize: "24px", color: "#013a7d", fontWeight: "800", marginBottom: "16px", letterSpacing: "-0.01em" }}>
                   Key Subjects & Curriculum
                 </h2>
                 <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }} className="subjects-grid">
                   {course.keySubjects.map((sub, i) => (
                     <div key={i} style={{
-                      background: "#FFFFFF", padding: "14px 18px", borderRadius: "10px",
-                      border: "1px solid #F0EDE6", display: "flex", gap: "10px", alignItems: "center"
+                      background: "#013a7d", padding: "14px 18px", borderRadius: "10px",
+                      border: "1px solid #002452",
+                      borderTop: "2px solid #D4AF37",
+                      display: "flex", gap: "10px", alignItems: "center",
+                      boxShadow: "0 10px 25px rgba(10, 25, 47, 0.08)"
                     }}>
-                      <span style={{ color: college?.color || "#1B3D6D", fontWeight: "800" }}>•</span>
-                      <span style={{ fontSize: "14px", color: "#1C2D42", fontWeight: "500" }}>{sub}</span>
+                      <span style={{ color: "#D4AF37", fontWeight: "800" }}>•</span>
+                      <span style={{ fontSize: "14px", color: "#BAC9DA", fontWeight: "500" }}>{sub}</span>
                     </div>
                   ))}
                 </div>
@@ -93,7 +101,7 @@ export default async function CourseDetailPage({ params }: PageProps) {
 
               {/* Career Opportunities */}
               <div>
-                <h2 style={{ fontFamily: "'Outfit', sans-serif", fontSize: "24px", color: "#0A192F", fontWeight: "800", marginBottom: "16px", letterSpacing: "-0.01em" }}>
+                <h2 style={{ fontFamily: "'Outfit', sans-serif", fontSize: "24px", color: "#013a7d", fontWeight: "800", marginBottom: "16px", letterSpacing: "-0.01em" }}>
                   Career Opportunities & Scope
                 </h2>
                 <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
@@ -111,40 +119,42 @@ export default async function CourseDetailPage({ params }: PageProps) {
             {/* Right Column: Fact Sheet Card */}
             <div>
               <div style={{
-                background: "#FFFFFF", borderRadius: "24px", padding: "36px",
-                border: "1px solid #F0EDE6", boxShadow: "0 10px 35px rgba(10,25,47,0.03)",
+                background: "#013a7d", borderRadius: "24px", padding: "36px",
+                border: "1px solid #002452",
+                borderTop: "3px solid #D4AF37",
+                boxShadow: "0 20px 45px rgba(10, 25, 47, 0.15)",
                 display: "flex", flexDirection: "column", gap: "24px", position: "sticky", top: "140px"
               }}>
-                <h3 style={{ fontFamily: "'Outfit', sans-serif", fontSize: "20px", color: "#0A192F", fontWeight: "800", borderBottom: "2px solid #FAF9F6", paddingBottom: "12px" }}>
+                <h3 style={{ fontFamily: "'Outfit', sans-serif", fontSize: "20px", color: "#D4AF37", fontWeight: "800", borderBottom: "1px solid #002452", paddingBottom: "12px" }}>
                   Quick Facts
                 </h3>
 
                 {/* Facts list */}
                 <div style={{ display: "flex", flexDirection: "column", gap: "18px" }}>
                   <div>
-                    <span style={{ fontSize: "10px", color: "#7E93A8", fontWeight: "700", textTransform: "uppercase" }}>Duration</span>
-                    <div style={{ fontSize: "15px", fontWeight: "700", color: "#1C2D42", marginTop: "4px" }}>
+                    <span style={{ fontSize: "10px", color: "#BAC9DA", fontWeight: "700", textTransform: "uppercase" }}>Duration</span>
+                    <div style={{ fontSize: "15px", fontWeight: "700", color: "#FAF9F6", marginTop: "4px" }}>
                       ⏱ {course.duration}
                     </div>
                   </div>
 
                   <div>
-                    <span style={{ fontSize: "10px", color: "#7E93A8", fontWeight: "700", textTransform: "uppercase" }}>Seat Intake</span>
-                    <div style={{ fontSize: "15px", fontWeight: "700", color: "#1C2D42", marginTop: "4px" }}>
+                    <span style={{ fontSize: "10px", color: "#BAC9DA", fontWeight: "700", textTransform: "uppercase" }}>Seat Intake</span>
+                    <div style={{ fontSize: "15px", fontWeight: "700", color: "#FAF9F6", marginTop: "4px" }}>
                       👥 {course.seatIntake}
                     </div>
                   </div>
 
                   <div>
-                    <span style={{ fontSize: "10px", color: "#7E93A8", fontWeight: "700", textTransform: "uppercase" }}>Eligibility Criteria</span>
-                    <div style={{ fontSize: "13.5px", fontWeight: "500", color: "#1C2D42", lineHeight: 1.5, marginTop: "4px" }}>
+                    <span style={{ fontSize: "10px", color: "#BAC9DA", fontWeight: "700", textTransform: "uppercase" }}>Eligibility Criteria</span>
+                    <div style={{ fontSize: "13.5px", fontWeight: "500", color: "#FAF9F6", lineHeight: 1.5, marginTop: "4px" }}>
                       {course.eligibility}
                     </div>
                   </div>
 
                   <div>
-                    <span style={{ fontSize: "10px", color: "#7E93A8", fontWeight: "700", textTransform: "uppercase" }}>Affiliation Board</span>
-                    <div style={{ fontSize: "13.5px", fontWeight: "500", color: "#1C2D42", lineHeight: 1.5, marginTop: "4px" }}>
+                    <span style={{ fontSize: "10px", color: "#BAC9DA", fontWeight: "700", textTransform: "uppercase" }}>Affiliation Board</span>
+                    <div style={{ fontSize: "13.5px", fontWeight: "500", color: "#FAF9F6", lineHeight: 1.5, marginTop: "4px" }}>
                       📜 {course.affiliationText}
                     </div>
                   </div>
@@ -152,10 +162,10 @@ export default async function CourseDetailPage({ params }: PageProps) {
 
                 {/* CTA Action */}
                 <Link href={`/admissions?college=${encodeURIComponent(college?.name || "")}&course=${encodeURIComponent(course.name)}`} style={{
-                  background: `linear-gradient(135deg, ${college?.color || "#0A192F"}, ${college?.secondaryColor || "#1B3D6D"})`,
-                  color: "#FAF9F6", padding: "14px", borderRadius: "10px", textDecoration: "none",
+                  background: "linear-gradient(135deg, #D4AF37, #F2D06B)",
+                  color: "#013a7d", padding: "14px", borderRadius: "10px", textDecoration: "none",
                   fontSize: "15px", fontWeight: "700", textAlign: "center",
-                  boxShadow: "0 6px 20px rgba(0,0,0,0.1)", transition: "all 0.3s ease",
+                  boxShadow: "0 6px 20px rgba(212, 175, 55, 0.2)", transition: "all 0.3s ease",
                   marginTop: "12px", textTransform: "uppercase", letterSpacing: "0.5px"
                 }}
                   className="apply-btn"
@@ -173,8 +183,8 @@ export default async function CourseDetailPage({ params }: PageProps) {
 
       <style>{`
         .apply-btn:hover {
-          transform: translateY(-1px);
-          box-shadow: 0 10px 25px rgba(10,25,47,0.25) !important;
+          transform: translateY(-2px) !important;
+          box-shadow: 0 10px 25px rgba(212, 175, 55, 0.35) !important;
         }
         @media (max-width: 992px) {
           .course-detail-grid { grid-template-columns: 1fr !important; gap: 40px !important; }

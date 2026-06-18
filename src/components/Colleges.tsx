@@ -1,29 +1,52 @@
 "use client";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { colleges } from "@/lib/data";
-
-const containerVariants = {
-  hidden: {},
-  show: {
-    transition: {
-      staggerChildren: 0.15,
-    },
-  },
-};
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 30 },
-  show: { opacity: 1, y: 0, transition: { type: "spring" as const, stiffness: 100, damping: 15 } },
-};
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import { colleges, courses } from "@/lib/data";
 
 export default function Colleges() {
-  const [hovered, setHovered] = useState<number | null>(null);
+  const [hoveredCard, setHoveredCard] = useState<string | null>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], ["-12%", "12%"]);
 
   return (
-    <section id="colleges" style={{ padding: "120px 24px", background: "linear-gradient(180deg, #F0EDE6 0%, #FAF9F6 100%)" }}>
-      <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
+    <section id="colleges" ref={sectionRef} style={{
+      padding: "120px 24px",
+      position: "relative",
+      overflow: "hidden",
+      borderBottom: "1px solid rgba(1, 58, 125, 0.05)"
+    }}>
+      {/* Parallax Background Image */}
+      <motion.div
+        style={{
+          position: "absolute",
+          top: "-20%",
+          left: 0,
+          width: "100%",
+          height: "140%",
+          backgroundImage: "url('/website_images/college_outside_photo3.jpeg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          y: y,
+          zIndex: 0
+        }}
+      />
+
+      {/* Dark Brand Overlay */}
+      <div style={{
+        position: "absolute",
+        inset: 0,
+        background: "linear-gradient(135deg, rgba(0, 26, 61, 0.94) 0%, rgba(1, 58, 125, 0.88) 50%, rgba(0, 26, 61, 0.96) 100%)",
+        zIndex: 1
+      }} />
+
+      <div style={{ position: "relative", zIndex: 2, maxWidth: "1200px", margin: "0 auto" }}>
         
         {/* Header */}
         <div style={{ textAlign: "center", marginBottom: "64px" }}>
@@ -32,138 +55,216 @@ export default function Colleges() {
           </span>
           <h2 style={{
             fontFamily: "'Outfit', sans-serif",
-            fontSize: "clamp(30px, 4vw, 44px)", color: "#0A192F",
+            fontSize: "clamp(30px, 4vw, 44px)", color: "#FFFFFF",
             marginTop: "12px", fontWeight: "800", letterSpacing: "-0.02em"
           }}>Our Colleges</h2>
-          <div style={{ width: "60px", height: "3px", background: "linear-gradient(90deg, #D4AF37, #F2D06B)", margin: "20px auto 0", borderRadius: "2px" }} />
-          <p style={{ color: "#5A6E85", fontSize: "16px", marginTop: "20px", maxWidth: "500px", margin: "20px auto 0" }}>
-            Five specialized institutions, one unified vision — excellence in education.
+          <div style={{ width: "60px", height: "3px", background: "#D4AF37", margin: "20px auto 0", borderRadius: "2px" }} />
+          <p style={{ color: "rgba(255, 255, 255, 0.82)", fontSize: "16px", marginTop: "20px", maxWidth: "600px", margin: "20px auto 0" }}>
+            Explore our five specialized institutions delivering world-class professional training.
           </p>
         </div>
 
-        {/* College Cards Grid */}
-        <motion.div 
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-100px" }}
-          style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "28px" }}
-        >
-          {colleges.map((college) => (
-            <motion.div 
-              key={college.id}
-              variants={cardVariants}
-              onMouseEnter={() => setHovered(college.id)}
-              onMouseLeave={() => setHovered(null)}
-              style={{
-                background: hovered === college.id
-                  ? `linear-gradient(135deg, ${college.color}, #0A192F)`
-                  : "#FFFFFF",
-                borderRadius: "20px",
-                padding: "36px 32px",
-                boxShadow: hovered === college.id
-                  ? `0 20px 40px rgba(10,25,47,0.25)`
-                  : "0 4px 24px rgba(10,25,47,0.04)",
-                transform: hovered === college.id ? "translateY(-8px)" : "translateY(0)",
-                transition: "all 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
-                border: "1px solid #F0EDE6",
-                position: "relative", overflow: "hidden",
-                cursor: "pointer"
-              }}>
+        {/* Bento Grid (Clean collage style, no outer wrapper background) */}
+        <div style={{ 
+          display: "grid", 
+          gridTemplateColumns: "repeat(3, 1fr)", 
+          gap: "20px"
+        }} className="colleges-bento-collage">
+          
+          {colleges.map((college, index) => {
+            const isWide = index === 0; // Only the first card is wide to perfectly fill the 3-column grid
+            const isHovered = hoveredCard === college.slug;
+            const collegeCourses = courses.filter(c => c.collegeSlug === college.slug);
 
-              {/* Background decoration */}
-              {hovered === college.id && (
-                <div style={{
-                  position: "absolute", top: "-30px", right: "-30px",
-                  width: "120px", height: "120px", borderRadius: "50%",
-                  background: "rgba(212,175,55,0.08)",
-                }} />
-              )}
-
-              {/* Badge */}
-              <div style={{
-                display: "inline-block", padding: "4px 14px", borderRadius: "20px",
-                background: hovered === college.id ? "rgba(212,175,55,0.2)" : "rgba(10,25,47,0.05)",
-                color: hovered === college.id ? "#F2D06B" : "#0A192F",
-                fontSize: "11px", fontWeight: "700", letterSpacing: "1px",
-                textTransform: "uppercase", marginBottom: "20px",
-                transition: "all 0.4s ease",
-              }}>{college.badge}</div>
-
-              {/* Icon & Short Name */}
-              <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "16px" }}>
-                <div style={{
-                  width: "56px", height: "56px", borderRadius: "14px",
-                  background: hovered === college.id ? "rgba(212,175,55,0.15)" : `${college.color}10`,
-                  display: "flex", alignItems: "center", justifyContent: "center",
-                  fontSize: "26px", flexShrink: 0,
-                  border: hovered === college.id ? "1px solid rgba(212,175,55,0.3)" : `1px solid ${college.color}15`,
-                }}>{college.icon}</div>
-                <div style={{
-                  fontFamily: "'Outfit', sans-serif",
-                  fontSize: "11px", fontWeight: "700", letterSpacing: "3px",
-                  color: hovered === college.id ? "rgba(212,175,55,0.7)" : "#7E93A8",
-                  textTransform: "uppercase",
-                }}>{college.shortName}</div>
-              </div>
-
-              {/* Name */}
-              <h3 style={{
-                fontFamily: "'Outfit', sans-serif",
-                fontSize: "20px", fontWeight: "800",
-                color: hovered === college.id ? "#FAF9F6" : "#0A192F",
-                marginBottom: "12px", lineHeight: 1.3,
-                transition: "color 0.4s ease",
-                letterSpacing: "-0.01em"
-              }}>{college.name}</h3>
-
-              {/* Desc */}
-              <p style={{
-                fontSize: "14px", lineHeight: 1.7,
-                color: hovered === college.id ? "rgba(250,249,246,0.75)" : "#5A6E85",
-                marginBottom: "24px", transition: "color 0.4s ease",
-              }}>{college.desc}</p>
-
-              {/* Link to detail page */}
-              <div style={{ marginBottom: "24px" }}>
-                <Link href={`/colleges/${college.slug}`} style={{
-                  display: "inline-block", fontSize: "13.5px", fontWeight: "700",
-                  textDecoration: "none", transition: "all 0.3s ease",
-                  color: hovered === college.id ? "#F2D06B" : "#1B3D6D",
+            return (
+              <motion.div
+                key={college.slug}
+                onMouseEnter={() => setHoveredCard(college.slug)}
+                onMouseLeave={() => setHoveredCard(null)}
+                style={{
+                  position: "relative",
+                  height: "420px",
+                  borderRadius: "16px",
+                  overflow: "hidden",
+                  border: "1px solid rgba(212, 175, 55, 0.15)",
+                  zIndex: isHovered ? 10 : 1,
+                  scale: isHovered ? 1.02 : 1,
+                  boxShadow: isHovered
+                    ? "0 20px 45px rgba(0, 0, 0, 0.4)"
+                    : "0 8px 24px rgba(0, 0, 0, 0.25)",
+                  transition: "all 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
+                  cursor: "pointer",
+                  gridColumn: isWide ? "span 2" : "auto"
                 }}
-                  onMouseEnter={e => { e.currentTarget.style.textDecoration = "underline"; }}
-                  onMouseLeave={e => { e.currentTarget.style.textDecoration = "none"; }}
-                >
-                  Explore Campus & Programs →
-                </Link>
-              </div>
+                className={isWide ? "bento-card-wide" : ""}
+              >
+                {/* Background Image */}
+                <img
+                  src={college.image}
+                  alt={college.name}
+                  style={{
+                    position: "absolute",
+                    inset: 0,
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    transition: "transform 0.8s cubic-bezier(0.16, 1, 0.3, 1)",
+                    transform: isHovered ? "scale(1.08)" : "scale(1)"
+                  }}
+                />
 
-              {/* Facilities */}
-              <div style={{ borderTop: `1px solid ${hovered === college.id ? "rgba(212,175,55,0.2)" : "rgba(10,25,47,0.06)"}`, paddingTop: "20px" }}>
+                {/* Translucent Brand Gradient Overlay */}
                 <div style={{
-                  fontSize: "11px", fontWeight: "700", letterSpacing: "1px",
-                  textTransform: "uppercase", marginBottom: "12px",
-                  color: hovered === college.id ? "#D4AF37" : "#0A192F",
-                }}>Facilities</div>
-                {college.facilities.slice(0, 2).map((fac, i) => (
-                  <div key={i} style={{
-                    display: "flex", alignItems: "center", gap: "8px",
-                    marginBottom: "8px", fontSize: "13px",
-                    color: hovered === college.id ? "rgba(250,249,246,0.85)" : "#1C2D42",
-                    transition: "color 0.4s ease",
+                  position: "absolute",
+                  inset: 0,
+                  transition: "all 0.4s ease",
+                  background: isHovered
+                    ? "linear-gradient(135deg, rgba(1, 58, 125, 0.94) 0%, rgba(0, 26, 61, 0.96) 100%)"
+                    : "linear-gradient(to top, rgba(0, 26, 61, 0.9) 0%, rgba(0, 26, 61, 0.45) 60%, transparent 100%)",
+                  zIndex: 1
+                }} />
+
+                {/* Card Content Wrapper */}
+                <div style={{
+                  position: "absolute",
+                  inset: 0,
+                  padding: "30px",
+                  zIndex: 2,
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "flex-end",
+                  height: "100%"
+                }}>
+                  {/* Floating Top Header Badges */}
+                  <div style={{ 
+                    position: "absolute", top: "30px", left: "30px", right: "30px",
+                    display: "flex", justifyContent: "space-between", alignItems: "center",
+                    opacity: isHovered ? 0.3 : 1, transition: "opacity 0.3s ease"
                   }}>
-                    <div style={{
-                      width: "6px", height: "6px", borderRadius: "50%", flexShrink: 0,
-                      background: hovered === college.id ? "#D4AF37" : college.color,
-                    }} />
-                    {fac.name}
+                    <span style={{
+                      fontSize: "9px", fontWeight: "750", color: "#D4AF37",
+                      background: "rgba(0, 26, 61, 0.6)", backdropFilter: "blur(4px)",
+                      padding: "6px 12px", borderRadius: "20px", textTransform: "uppercase",
+                      border: "1px solid rgba(212, 175, 55, 0.25)"
+                    }}>{college.badge}</span>
+                    <span style={{
+                      fontSize: "11px", fontWeight: "750", color: "#FFFFFF",
+                      textShadow: "0 2px 4px rgba(0,0,0,0.4)"
+                    }}>Est. {college.established}</span>
                   </div>
-                ))}
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
+
+                  {/* Icon & Title Info */}
+                  <div style={{
+                    transform: isHovered ? "translateY(-10px)" : "translateY(0)",
+                    transition: "transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)"
+                  }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "10px" }}>
+                      <span style={{
+                        width: "38px", height: "38px", borderRadius: "8px",
+                        background: "rgba(255, 255, 255, 0.15)",
+                        display: "flex", alignItems: "center", justifyContent: "center",
+                        fontSize: "18px", border: "1px solid rgba(255, 255, 255, 0.2)"
+                      }}>{college.icon}</span>
+                      <span style={{
+                        fontSize: "11px", fontWeight: "800", letterSpacing: "3px",
+                        color: "#D4AF37", textTransform: "uppercase"
+                      }}>{college.shortName}</span>
+                    </div>
+
+                    <h3 style={{
+                      fontFamily: "'Outfit', sans-serif",
+                      fontSize: isWide ? "clamp(20px, 3vw, 24px)" : "19px",
+                      color: "#FFFFFF", fontWeight: "800",
+                      lineHeight: 1.25, letterSpacing: "-0.01em"
+                    }}>
+                      {college.name}
+                    </h3>
+                  </div>
+
+                  {/* Revealable Details Block */}
+                  <AnimatePresence>
+                    {isHovered && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0, marginTop: 0 }}
+                        animate={{ opacity: 1, height: "auto", marginTop: 16 }}
+                        exit={{ opacity: 0, height: 0, marginTop: 0 }}
+                        transition={{ duration: 0.35, ease: "easeInOut" }}
+                        style={{ overflow: "hidden" }}
+                      >
+                        <p style={{
+                          color: "#E2E8F0", fontSize: "13.5px", lineHeight: 1.55,
+                          marginBottom: "16px", display: "-webkit-box",
+                          WebkitLineClamp: 3, WebkitBoxOrient: "vertical", overflow: "hidden"
+                        }}>
+                          {college.desc}
+                        </p>
+
+                        {/* List of Courses Highlights */}
+                        <div style={{ display: "flex", gap: "6px", flexWrap: "wrap", marginBottom: "20px" }}>
+                          {collegeCourses.slice(0, 3).map(course => (
+                            <span key={course.slug} style={{
+                              fontSize: "11px", background: "rgba(255, 255, 255, 0.08)",
+                              color: "#FAF9F6", padding: "4px 8px", borderRadius: "6px",
+                              fontWeight: "600", border: "1px solid rgba(255, 255, 255, 0.06)"
+                            }}>
+                              {course.name.split(" (")[0]}
+                            </span>
+                          ))}
+                        </div>
+
+                        {/* CTA button */}
+                        <Link href={`/colleges/${college.slug}`} style={{
+                          display: "inline-block", background: "#D4AF37", color: "#001A3D",
+                          padding: "10px 24px", borderRadius: "8px", textDecoration: "none",
+                          fontSize: "12.5px", fontWeight: "750", textTransform: "uppercase",
+                          letterSpacing: "0.5px", boxShadow: "0 4px 14px rgba(212, 175, 55, 0.2)",
+                          transition: "all 0.3s"
+                        }}
+                          onMouseEnter={e => { e.currentTarget.style.background = "#FFFFFF"; }}
+                          onMouseLeave={e => { e.currentTarget.style.background = "#D4AF37"; }}
+                        >
+                          Explore College →
+                        </Link>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+
+                  {/* Hint indicator when not hovered */}
+                  {!isHovered && (
+                    <div style={{ 
+                      fontSize: "11px", color: "rgba(255, 255, 255, 0.5)", 
+                      marginTop: "12px", display: "flex", alignItems: "center", gap: "6px" 
+                    }}>
+                      <span>✦</span> Hover to explore details
+                    </div>
+                  )}
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
+
       </div>
+
+      <style>{`
+        @media (max-width: 992px) {
+          .colleges-bento-collage {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 16px !important;
+          }
+          .bento-card-wide {
+            grid-column: span 2 !important;
+          }
+        }
+        @media (max-width: 768px) {
+          .colleges-bento-collage {
+            grid-template-columns: 1fr !important;
+          }
+          .bento-card-wide {
+            grid-column: span 1 !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }

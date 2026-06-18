@@ -19,10 +19,10 @@ export default function Home() {
       <Colleges />
       <Council />
       <Courses />
-      <Placements />
       <Gallery />
-      <Admissions />
+      <Placements />
       <Contact />
+      <Admissions />
       <Footer />
     </>
   );

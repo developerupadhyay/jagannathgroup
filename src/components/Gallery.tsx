@@ -23,12 +23,12 @@ export default function Gallery() {
           <span style={{ color: "#D4AF37", fontSize: "13px", fontWeight: "700", letterSpacing: "3px", textTransform: "uppercase" }}>Campus Life</span>
           <h2 style={{ 
             fontFamily: "'Outfit', sans-serif", 
-            fontSize: "clamp(30px, 4vw, 44px)", color: "#0A192F", 
+            fontSize: "clamp(30px, 4vw, 44px)", color: "#013a7d", 
             marginTop: "12px", fontWeight: "800", letterSpacing: "-0.02em" 
           }}>
             Explore Our Campus
           </h2>
-          <div style={{ width: "60px", height: "3px", background: "linear-gradient(90deg, #D4AF37, #F2D06B)", margin: "20px auto 0", borderRadius: "2px" }} />
+          <div style={{ width: "60px", height: "3px", background: "#D4AF37", margin: "20px auto 0", borderRadius: "2px" }} />
         </div>
 
         {/* Gallery Grid */}
@@ -40,12 +40,12 @@ export default function Gallery() {
               style={{
                 borderRadius: "16px", overflow: "hidden", cursor: "pointer",
                 aspectRatio: "1/1", position: "relative",
-                boxShadow: selected === i ? "0 12px 40px rgba(10,25,47,0.25)" : "0 4px 16px rgba(10,25,47,0.03)",
+                boxShadow: selected === i ? "0 12px 40px rgba(10,25,47,0.25)" : "0 4px 16px rgba(1, 58, 125, 0.04)",
                 transform: selected === i ? "scale(1.02)" : "scale(1)",
                 transition: "all 0.3s ease",
                 gridColumn: i === 0 ? "span 2" : "auto",
                 gridRow: i === 0 ? "span 2" : "auto",
-                border: "1px solid #F0EDE6"
+                border: "1px solid rgba(212, 175, 55, 0.15)"
               }}
               className="gallery-item"
             >
@@ -58,10 +58,10 @@ export default function Gallery() {
               />
               <div style={{
                 position: "absolute", bottom: 0, left: 0, right: 0,
-                background: "linear-gradient(to top, rgba(10,25,47,0.85) 0%, transparent 100%)",
+                background: "linear-gradient(to top, rgba(1, 58, 125, 0.85) 0%, transparent 100%)",
                 padding: "30px 20px 16px",
               }}>
-                <span style={{ color: "#FAF9F6", fontSize: "14px", fontWeight: "600", fontFamily: "'Outfit', sans-serif" }}>{img.label}</span>
+                <span style={{ color: "#FAF9F6", fontSize: "14px", fontWeight: "750", fontFamily: "'Outfit', sans-serif" }}>{img.label}</span>
               </div>
             </motion.div>
           ))}

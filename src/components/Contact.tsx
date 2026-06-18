@@ -11,7 +11,7 @@ export default function Contact() {
           <span style={{ color: "#D4AF37", fontSize: "13px", fontWeight: "700", letterSpacing: "3px", textTransform: "uppercase" }}>Get In Touch</span>
           <h2 style={{ 
             fontFamily: "'Outfit', sans-serif", 
-            fontSize: "clamp(30px, 4vw, 44px)", color: "#0A192F", 
+            fontSize: "clamp(30px, 4vw, 44px)", color: "#013a7d", 
             marginTop: "12px", fontWeight: "800", letterSpacing: "-0.02em" 
           }}>Contact Us</h2>
           <div style={{ width: "60px", height: "3px", background: "linear-gradient(90deg, #D4AF37, #F2D06B)", margin: "20px auto 0", borderRadius: "2px" }} />
@@ -33,31 +33,60 @@ export default function Contact() {
             { icon: "🕐", title: "Office Working Hours", lines: ["Monday – Saturday", "9:00 AM – 5:00 PM", "Sundays: Closed"] },
           ].map((item, i) => (
             <div key={i} style={{
-              background: "#FFF", borderRadius: "16px", padding: "28px 24px",
-              border: "1px solid #F0EDE6",
-              boxShadow: "0 4px 20px rgba(10,25,47,0.02)",
-              display: "flex", gap: "16px", alignItems: "flex-start",
+              background: "#013a7d",
+              borderRadius: "16px", padding: "28px 24px",
+              border: "1px solid rgba(212, 175, 55, 0.15)",
+              borderTop: "3px solid #D4AF37",
+              boxShadow: "0 15px 35px rgba(1, 58, 125, 0.08)",
+              display: "flex", gap: "20px", alignItems: "flex-start",
             }}
               className="hover-lift"
             >
+              {/* Icon wrapper (Soft Glass Wrapper with Gold Icon) */}
               <div style={{
                 width: "48px", height: "48px", borderRadius: "12px", flexShrink: 0,
-                background: "linear-gradient(135deg, #0A192F, #1B3D6D)",
+                background: "#002452",
                 display: "flex", alignItems: "center", justifyContent: "center",
                 fontSize: "22px",
+                border: "1px solid rgba(255, 255, 255, 0.15)"
               }}>{item.icon}</div>
               <div>
-                <div style={{ fontWeight: "700", color: "#0A192F", fontSize: "15px", marginBottom: "8px", fontFamily: "'Outfit', sans-serif" }}>{item.title}</div>
-                {item.lines.map((line, j) => (
-                  <div key={j} style={{ color: "#5A6E85", fontSize: "14px", lineHeight: 1.8 }}>{line}</div>
-                ))}
+                <div style={{ fontWeight: "700", color: "#D4AF37", fontSize: "15px", marginBottom: "8px", fontFamily: "'Outfit', sans-serif" }}>{item.title}</div>
+                {item.lines.map((line, j) => {
+                  if (line.includes("@")) {
+                    return (
+                      <div key={j} style={{ fontSize: "14px", lineHeight: 1.8 }}>
+                        <a href={`mailto:${line}`} style={{ color: "#FFFFFF", textDecoration: "none", transition: "color 0.2s" }}
+                           onMouseEnter={e => e.currentTarget.style.color = "#D4AF37"}
+                           onMouseLeave={e => e.currentTarget.style.color = "#FFFFFF"}>{line}</a>
+                      </div>
+                    );
+                  }
+                  if (line.startsWith("+91-")) {
+                    return (
+                      <div key={j} style={{ fontSize: "14px", lineHeight: 1.8 }}>
+                        <a href={`tel:${line.replace(/-/g, "")}`} style={{ color: "#FFFFFF", textDecoration: "none", transition: "color 0.2s" }}
+                           onMouseEnter={e => e.currentTarget.style.color = "#D4AF37"}
+                           onMouseLeave={e => e.currentTarget.style.color = "#FFFFFF"}>{line}</a>
+                      </div>
+                    );
+                  }
+                  return (
+                    <div key={j} style={{ color: "#FFFFFF", fontSize: "14px", lineHeight: 1.8 }}>{line}</div>
+                  );
+                })}
               </div>
             </div>
           ))}
         </motion.div>
 
         {/* Map Embed */}
-        <div style={{ borderRadius: "20px", overflow: "hidden", boxShadow: "0 8px 40px rgba(10,25,47,0.08)", border: "1px solid #F0EDE6" }}>
+        <div style={{ 
+          borderRadius: "20px", 
+          overflow: "hidden", 
+          boxShadow: "0 15px 40px rgba(1, 58, 125, 0.08)", 
+          border: "1px solid rgba(212, 175, 55, 0.18)" 
+        }}>
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3494.7123!2d77.6!3d28.83!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjjCsDQ5JzQ4LjAiTiA3N8KwMzYnMDAuMCJF!5e0!3m2!1sen!2sin!4v1234567890"
             width="100%" height="380" style={{ border: 0, display: "block" }}
