@@ -1,112 +1,137 @@
 "use client";
+import Link from "next/link";
+import { motion } from "framer-motion";
+
 export default function About() {
   return (
-    <section id="about" style={{ padding: "100px 24px", background: "#FAF6EF" }}>
+    <section id="about" style={{ padding: "120px 24px", background: "#FAF9F6" }}>
       <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
+        
         {/* Section Label */}
-        <div style={{ textAlign: "center", marginBottom: "60px" }}>
+        <div style={{ textAlign: "center", marginBottom: "64px" }}>
           <span style={{
-            color: "#8B1A1A", fontSize: "13px", fontWeight: "700",
+            color: "#D4AF37", fontSize: "13px", fontWeight: "700",
             letterSpacing: "3px", textTransform: "uppercase",
           }}>Who We Are</span>
           <h2 style={{
-            fontFamily: "'Playfair Display', serif",
-            fontSize: "clamp(30px, 4vw, 48px)", color: "#5C0A14",
-            marginTop: "12px", fontWeight: "700",
+            fontFamily: "'Outfit', sans-serif",
+            fontSize: "clamp(30px, 4vw, 44px)", color: "#0A192F",
+            marginTop: "12px", fontWeight: "800", letterSpacing: "-0.02em"
           }}>About Jagannath Group</h2>
-          <div style={{ width: "60px", height: "3px", background: "linear-gradient(90deg, #D4AF37, #F0D060)", margin: "20px auto 0", borderRadius: "2px" }} />
+          <div style={{ width: "60px", height: "3px", background: "linear-gradient(90deg, #D4AF37, #F2D06B)", margin: "20px auto 0", borderRadius: "2px" }} />
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "60px", alignItems: "center" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "60px", alignItems: "center" }} className="about-grid">
           {/* Left: Text */}
-          <div>
-            <p style={{ color: "#4A2020", lineHeight: 1.9, fontSize: "16px", marginBottom: "24px" }}>
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <p style={{ color: "#1C2D42", lineHeight: 1.8, fontSize: "16px", marginBottom: "24px" }}>
               The <strong>Jagannath Group of Institutions</strong> is a premier educational organization 
               located at Mohammadpur Road, Sikri Kalan, Modinagar, Ghaziabad, Uttar Pradesh. 
               Committed to providing quality professional education, the group has established 
               itself as a trusted name in the region.
             </p>
-            <p style={{ color: "#4A2020", lineHeight: 1.9, fontSize: "16px", marginBottom: "36px" }}>
+            <p style={{ color: "#435870", lineHeight: 1.8, fontSize: "16px", marginBottom: "28px" }}>
               With 5 specialized institutions spanning Pharmacy, Nursing, Education, Law, and 
               General Studies, the group offers diverse academic pathways to thousands of 
               students each year, preparing them for successful careers.
             </p>
+            
+            <div style={{ marginBottom: "40px" }}>
+              <Link href="/about" style={{
+                display: "inline-block", background: "linear-gradient(135deg, #0A192F, #1B3D6D)",
+                color: "#FAF9F6", padding: "12px 28px", borderRadius: "25px", textDecoration: "none",
+                fontSize: "13.5px", fontWeight: "700", boxShadow: "0 4px 15px rgba(10,25,47,0.15)",
+                transition: "all 0.3s ease", textTransform: "uppercase", letterSpacing: "0.5px"
+              }}
+                onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-1px)"; e.currentTarget.style.boxShadow = "0 6px 20px rgba(10,25,47,0.25)"; }}
+                onMouseLeave={e => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "0 4px 15px rgba(10,25,47,0.15)"; }}
+              >
+                Explore Legacy & Leadership →
+              </Link>
+            </div>
 
             {/* Values */}
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }} className="values-grid">
               {[
-                { icon: "🎓", title: "Quality Education", desc: "AICTE & BTE affiliated programs" },
-                { icon: "🏆", title: "Excellence", desc: "Committed to academic excellence" },
-                { icon: "🤝", title: "Integrity", desc: "Transparent & ethical practices" },
-                { icon: "🌟", title: "Innovation", desc: "Modern teaching methodologies" },
+                { icon: "🎓", title: "Quality Education", desc: "AICTE, PCI, BTE & NCTE affiliated" },
+                { icon: "🏆", title: "Academic Excellence", desc: "Committed to placement-driven goals" },
+                { icon: "🤝", title: "Transparent Integrity", desc: "Honest and ethical guidelines" },
+                { icon: "🌟", title: "Modern Pedagogy", desc: "Hands-on lab and clinic routines" },
               ].map((v, i) => (
                 <div key={i} style={{
                   background: "#FFF", borderRadius: "12px", padding: "20px",
-                  border: "1px solid rgba(139,26,26,0.1)",
-                  boxShadow: "0 2px 12px rgba(92,10,20,0.06)",
+                  border: "1px solid #F0EDE6",
+                  boxShadow: "0 4px 15px rgba(0,0,0,0.02)",
                 }}>
                   <div style={{ fontSize: "24px", marginBottom: "8px" }}>{v.icon}</div>
-                  <div style={{ fontWeight: "700", color: "#5C0A14", fontSize: "14px", marginBottom: "4px" }}>{v.title}</div>
-                  <div style={{ color: "#8B6060", fontSize: "13px" }}>{v.desc}</div>
+                  <div style={{ fontWeight: "700", color: "#0A192F", fontSize: "14.5px", marginBottom: "4px", fontFamily: "'Outfit', sans-serif" }}>{v.title}</div>
+                  <div style={{ color: "#7E93A8", fontSize: "13px", lineHeight: 1.4 }}>{v.desc}</div>
                 </div>
               ))}
             </div>
-          </div>
+          </motion.div>
 
-          {/* Right: Visual Card */}
-          <div style={{ position: "relative" }}>
+          {/* Right: Visual Image Card */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            style={{ position: "relative" }}
+          >
+            {/* Campus Photo with Overlay */}
             <div style={{
-              background: "linear-gradient(135deg, #5C0A14, #8B1A1A)",
-              borderRadius: "20px", padding: "48px 40px",
-              color: "#FAF6EF", textAlign: "center",
-              boxShadow: "0 20px 60px rgba(92,10,20,0.3)",
+              borderRadius: "24px", overflow: "hidden",
+              boxShadow: "0 20px 45px rgba(10,25,47,0.15)",
+              border: "1px solid rgba(212,175,55,0.2)",
+              aspectRatio: "4/3", position: "relative",
+              background: "#0A192F"
             }}>
+              <img 
+                src="/website_images/college_front_photo.jpeg" 
+                alt="Jagannath Group Campus Front View" 
+                style={{ width: "100%", height: "100%", objectFit: "cover", opacity: 0.9 }} 
+              />
+              {/* Gold gradient overlay */}
               <div style={{
-                width: "80px", height: "80px", borderRadius: "50%",
-                background: "linear-gradient(135deg, #D4AF37, #F0D060)",
-                margin: "0 auto 24px",
-                display: "flex", alignItems: "center", justifyContent: "center",
-                fontSize: "36px", fontWeight: "800", color: "#5C0A14",
-                fontFamily: "'Playfair Display', serif",
-                boxShadow: "0 8px 30px rgba(212,175,55,0.4)",
-              }}>J</div>
-              <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: "24px", marginBottom: "8px", color: "#FAF6EF" }}>
-                Jagannath Group
-              </h3>
-              <p style={{ color: "#D4AF37", fontSize: "13px", letterSpacing: "2px", textTransform: "uppercase", marginBottom: "32px" }}>
-                of Institutions
-              </p>
-              <div style={{ borderTop: "1px solid rgba(212,175,55,0.2)", paddingTop: "24px" }}>
-                <p style={{ color: "rgba(250,246,239,0.75)", fontSize: "15px", fontStyle: "italic", lineHeight: 1.7 }}>
-                  "Nurturing Excellence, Shaping Futures — empowering every student with 
-                  knowledge, skills, and values for a brighter tomorrow."
+                position: "absolute", inset: 0,
+                background: "linear-gradient(to top, rgba(10,25,47,0.85) 0%, rgba(10,25,47,0.1) 60%)",
+                pointerEvents: "none"
+              }} />
+              
+              {/* Bottom text inside image */}
+              <div style={{ position: "absolute", bottom: "32px", left: "32px", right: "32px" }}>
+                <h3 style={{ fontFamily: "'Outfit', sans-serif", fontSize: "22px", color: "#FAF9F6", fontWeight: "700", marginBottom: "6px" }}>
+                  Modinagar Main Campus
+                </h3>
+                <p style={{ color: "#D4AF37", fontSize: "13px", letterSpacing: "1px", textTransform: "uppercase", fontWeight: "600" }}>
+                  Ghaziabad, Uttar Pradesh
                 </p>
-              </div>
-              <div style={{ marginTop: "28px", display: "flex", justifyContent: "center", gap: "8px" }}>
-                <div style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#D4AF37" }} />
-                <div style={{ width: "8px", height: "8px", borderRadius: "50%", background: "rgba(212,175,55,0.4)" }} />
-                <div style={{ width: "8px", height: "8px", borderRadius: "50%", background: "rgba(212,175,55,0.2)" }} />
               </div>
             </div>
 
             {/* Floating badge */}
             <div style={{
               position: "absolute", top: "-20px", right: "-20px",
-              background: "#D4AF37", borderRadius: "12px", padding: "12px 20px",
-              boxShadow: "0 8px 24px rgba(212,175,55,0.4)",
+              background: "linear-gradient(135deg, #D4AF37, #F2D06B)", borderRadius: "14px", padding: "14px 22px",
+              boxShadow: "0 10px 25px rgba(212,175,55,0.4)", textAlign: "center"
             }}>
-              <div style={{ fontSize: "20px", fontWeight: "800", color: "#5C0A14", fontFamily: "'Playfair Display', serif" }}>5+</div>
-              <div style={{ fontSize: "11px", color: "#5C0A14", fontWeight: "700", textTransform: "uppercase", letterSpacing: "1px" }}>Colleges</div>
+              <div style={{ fontSize: "22px", fontWeight: "800", color: "#0A192F", fontFamily: "'Outfit', sans-serif", lineHeight: 1 }}>5+</div>
+              <div style={{ fontSize: "10px", color: "#0A192F", fontWeight: "700", textTransform: "uppercase", letterSpacing: "1px", marginTop: "4px" }}>Campuses</div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
 
       <style>{`
         @media (max-width: 768px) {
-          #about > div > div:last-child {
-            grid-template-columns: 1fr !important;
-          }
+          .about-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+          .values-grid { grid-template-columns: 1fr !important; }
         }
       `}</style>
     </section>

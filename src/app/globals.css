@@ -1,16 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
-  --maroon-dark: #5C0A14;
-  --maroon: #8B1A1A;
-  --maroon-light: #C41E3A;
+  --navy-dark: #0A192F;
+  --navy: #0F2A4A;
+  --navy-light: #1B3D6D;
   --gold: #D4AF37;
-  --gold-light: #F0D060;
-  --cream: #FAF6EF;
-  --cream-dark: #F0E8D8;
-  --text-dark: #1A0A0A;
-  --text-mid: #4A2020;
-  --text-light: #8B6060;
+  --gold-light: #F2D06B;
+  --cream: #FAF9F6;
+  --cream-dark: #F0EDE6;
+  --text-dark: #1C2D42;
+  --text-mid: #435870;
+  --text-light: #7E93A8;
   --white: #FFFFFF;
 }
 
@@ -31,11 +31,28 @@ body {
   overflow-x: hidden;
 }
 
-h1, h2, h3, h4 {
-  font-family: 'Playfair Display', serif;
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
 /* Scrollbar */
 ::-webkit-scrollbar { width: 8px; }
 ::-webkit-scrollbar-track { background: var(--cream-dark); }
-::-webkit-scrollbar-thumb { background: var(--maroon); border-radius: 4px; }
+::-webkit-scrollbar-thumb { background: var(--navy); border-radius: 4px; }
+
+/* Pulse animation utility */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+/* Lift-up effect for cards */
+.hover-lift {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.hover-lift:hover {
+  transform: translateY(-6px) !important;
+  box-shadow: 0 20px 40px rgba(10,25,47,0.12) !important;
+}
