@@ -75,13 +75,12 @@ export default function AdmissionsPage() {
           </div>
         </section>
 
-        {/* Detailed Enquiry Form */}
         <section id="apply-form" style={{ padding: "80px 24px", background: "#FAF9F6" }}>
-          <div style={{ 
+          <div className="admissions-page-form-container" style={{ 
             maxWidth: "750px", margin: "0 auto", 
             background: "#013a7d", 
             backdropFilter: "none", 
-            borderRadius: "24px", padding: "40px", 
+            borderRadius: "24px", 
             border: "1px solid #002452", 
             borderTop: "3px solid #D4AF37",
             boxShadow: "0 20px 50px rgba(1, 58, 125, 0.12)" 
@@ -314,6 +313,9 @@ export default function AdmissionsPage() {
       <Footer />
 
       <style>{`
+        .admissions-page-form-container {
+          padding: 40px;
+        }
         .admissions-page-form input::placeholder,
         .admissions-page-form textarea::placeholder {
           color: rgba(250, 249, 246, 0.4) !important;
@@ -326,6 +328,14 @@ export default function AdmissionsPage() {
           .admission-steps { grid-template-columns: 1fr !important; }
           .docs-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
           .form-row { grid-template-columns: 1fr !important; }
+          .admissions-page-form-container {
+            padding: 24px 20px !important;
+          }
+        }
+        @media (max-width: 480px) {
+          .admissions-page-form-container {
+            padding: 16px 12px !important;
+          }
         }
       `}</style>
     </>

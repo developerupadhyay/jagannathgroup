@@ -227,51 +227,55 @@ export default function Navbar() {
         </div>
       </nav>
 
+      {/* Mobile Menu Backdrop */}
+      <div 
+        className={`mobile-menu-backdrop ${menuOpen ? "open" : ""}`}
+        onClick={() => setMenuOpen(false)}
+      />
+
       {/* Mobile Menu Panel */}
-      {menuOpen && (
-        <div className="mobile-menu-panel">
-          <Link href="/" style={{ color: "#001A3D", textDecoration: "none", fontSize: "18px", fontWeight: "700" }}>Home</Link>
+      <div className={`mobile-menu-panel ${menuOpen ? "open" : ""}`}>
+        <Link href="/" style={{ color: "#001A3D", textDecoration: "none", fontSize: "18px", fontWeight: "700" }}>Home</Link>
 
-          <Link href="/about" style={{ color: "#001A3D", textDecoration: "none", fontSize: "18px", fontWeight: "700" }}>About Us</Link>
+        <Link href="/about" style={{ color: "#001A3D", textDecoration: "none", fontSize: "18px", fontWeight: "700" }}>About Us</Link>
 
-          {/* Colleges (Collapsible) */}
-          <div>
-            <div onClick={() => toggleDropdown("colleges")} style={{ color: "#001A3D", fontSize: "18px", fontWeight: "700", display: "flex", justifyContent: "space-between", cursor: "pointer" }}>
-              <span>Colleges</span>
-              <span>{activeDropdown === "colleges" ? "▲" : "▼"}</span>
-            </div>
-            {activeDropdown === "colleges" && (
-              <div style={{ display: "flex", flexDirection: "column", gap: "14px", paddingLeft: "16px", marginTop: "12px", borderLeft: "2px solid #013a7d" }}>
-                {collegesList.map((col) => (
-                  <Link key={col.slug} href={`/colleges/${col.slug}`} style={{ color: "#013a7d", textDecoration: "none", fontSize: "15px", fontWeight: "600" }}>
-                    {col.name}
-                  </Link>
-                ))}
-              </div>
-            )}
+        {/* Colleges (Collapsible) */}
+        <div>
+          <div onClick={() => toggleDropdown("colleges")} style={{ color: "#001A3D", fontSize: "18px", fontWeight: "700", display: "flex", justifyContent: "space-between", cursor: "pointer" }}>
+            <span>Colleges</span>
+            <span>{activeDropdown === "colleges" ? "▲" : "▼"}</span>
           </div>
-
-          {/* Academics (Collapsible) */}
-          <div>
-            <div onClick={() => toggleDropdown("courses")} style={{ color: "#001A3D", fontSize: "18px", fontWeight: "700", display: "flex", justifyContent: "space-between", cursor: "pointer" }}>
-              <span>Academics</span>
-              <span>{activeDropdown === "courses" ? "▲" : "▼"}</span>
+          {activeDropdown === "colleges" && (
+            <div style={{ display: "flex", flexDirection: "column", gap: "14px", paddingLeft: "16px", marginTop: "12px", borderLeft: "2px solid #013a7d" }}>
+              {collegesList.map((col) => (
+                <Link key={col.slug} href={`/colleges/${col.slug}`} style={{ color: "#013a7d", textDecoration: "none", fontSize: "15px", fontWeight: "600" }}>
+                  {col.name}
+                </Link>
+              ))}
             </div>
-            {activeDropdown === "courses" && (
-              <div style={{ display: "flex", flexDirection: "column", gap: "14px", paddingLeft: "16px", marginTop: "12px", borderLeft: "2px solid #013a7d" }}>
-                {coursesCategories.map((cat, idx) => (
-                  <Link key={idx} href={`/courses${cat.query}`} style={{ color: "#013a7d", textDecoration: "none", fontSize: "15px", fontWeight: "600" }}>
-                    {cat.label}
-                  </Link>
-                ))}
-              </div>
-            )}
-          </div>
-
-          <Link href="/admissions" style={{ color: "#001A3D", textDecoration: "none", fontSize: "18px", fontWeight: "700" }}>Admissions</Link>
-          <Link href="/contact" style={{ color: "#001A3D", textDecoration: "none", fontSize: "18px", fontWeight: "700" }}>Contact Us</Link>
+          )}
         </div>
-      )}
+
+        {/* Academics (Collapsible) */}
+        <div>
+          <div onClick={() => toggleDropdown("courses")} style={{ color: "#001A3D", fontSize: "18px", fontWeight: "700", display: "flex", justifyContent: "space-between", cursor: "pointer" }}>
+            <span>Academics</span>
+            <span>{activeDropdown === "courses" ? "▲" : "▼"}</span>
+          </div>
+          {activeDropdown === "courses" && (
+            <div style={{ display: "flex", flexDirection: "column", gap: "14px", paddingLeft: "16px", marginTop: "12px", borderLeft: "2px solid #013a7d" }}>
+              {coursesCategories.map((cat, idx) => (
+                <Link key={idx} href={`/courses${cat.query}`} style={{ color: "#013a7d", textDecoration: "none", fontSize: "15px", fontWeight: "600" }}>
+                  {cat.label}
+                </Link>
+              ))}
+            </div>
+          )}
+        </div>
+
+        <Link href="/admissions" style={{ color: "#001A3D", textDecoration: "none", fontSize: "18px", fontWeight: "700" }}>Admissions</Link>
+        <Link href="/contact" style={{ color: "#001A3D", textDecoration: "none", fontSize: "18px", fontWeight: "700" }}>Contact Us</Link>
+      </div>
 
       {/* Global CSS Inject */}
       <style>{`
@@ -337,11 +341,29 @@ export default function Navbar() {
         .nav-link-btn:hover {
           color: #013a7d !important;
         }
-        .mobile-menu-panel {
+        .mobile-menu-backdrop {
           position: fixed !important;
           top: 105px !important;
           left: 0 !important;
           right: 0 !important;
+          bottom: 0 !important;
+          background: rgba(0, 26, 61, 0.45) !important;
+          backdrop-filter: blur(2px) !important;
+          z-index: 998 !important;
+          opacity: 0 !important;
+          visibility: hidden !important;
+          transition: opacity 0.4s ease, visibility 0.4s !important;
+        }
+        .mobile-menu-backdrop.open {
+          opacity: 1 !important;
+          visibility: visible !important;
+        }
+        .mobile-menu-panel {
+          position: fixed !important;
+          top: 105px !important;
+          right: 0 !important;
+          width: 320px !important;
+          max-width: 100% !important;
           bottom: 0 !important;
           background: #FFFFFF !important;
           z-index: 999 !important;
@@ -351,6 +373,17 @@ export default function Navbar() {
           gap: 20px !important;
           overflow-y: auto !important;
           border-top: 1px solid rgba(1, 58, 125, 0.08) !important;
+          border-left: 1px solid rgba(1, 58, 125, 0.08) !important;
+          box-shadow: -10px 0 30px rgba(1, 58, 125, 0.05) !important;
+          
+          /* Slide transitions */
+          transform: translateX(100%) !important;
+          visibility: hidden !important;
+          transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s !important;
+        }
+        .mobile-menu-panel.open {
+          transform: translateX(0) !important;
+          visibility: visible !important;
         }
         @media (max-width: 992px) {
           .desktop-nav { display: none !important; }
@@ -358,6 +391,9 @@ export default function Navbar() {
         }
         @media (max-width: 480px) {
           .mobile-menu-panel {
+            top: 122px !important;
+          }
+          .mobile-menu-backdrop {
             top: 122px !important;
           }
         }
